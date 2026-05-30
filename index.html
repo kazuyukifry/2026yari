@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>槍ヶ岳 登山計画 2026 ｜ お父さん3人 北アルプス縦走</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0a1622;
+    --alpine:#15304c;
+    --alpine-2:#1d4067;
+    --sky:#3a78ad;
+    --sky-light:#7fb0d6;
+    --glacier:#e6eef4;
+    --paper:#f6f3ec;
+    --paper-2:#efeae0;
+    --ink:#172029;
+    --stone:#5d6975;
+    --stone-light:#8c97a2;
+    --line:#d8d2c6;
+    --glow:#e07a38;
+    --glow-deep:#c6602a;
+    --snow:#ffffff;
+    --maxw:1180px;
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.85;
+    font-size:16px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .serif{font-family:'Shippori Mincho',serif;}
+  .mono{font-family:'Oswald',sans-serif;font-weight:500;letter-spacing:.04em;}
+  a{color:inherit;}
+
+  /* ====== KICKER / SECTION HEADERS ====== */
+  .kicker{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--glow-deep);
+    display:flex;align-items:center;gap:12px;
+  }
+  .kicker::before{content:"";width:34px;height:2px;background:var(--glow);display:inline-block;}
+  .sec-head{margin:0 0 38px;}
+  .sec-head h2{
+    font-family:'Shippori Mincho',serif;
+    font-weight:800;
+    font-size:clamp(28px,4.4vw,44px);
+    line-height:1.25;
+    margin-top:14px;
+    letter-spacing:.02em;
+  }
+  .sec-head p{color:var(--stone);max-width:60ch;margin-top:12px;font-size:15px;}
+  section{padding:72px 0;}
+
+  /* ====== HERO ====== */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    color:var(--snow);
+    background:linear-gradient(180deg,#06101c 0%,#0e2138 32%,#1d4067 60%,#3a6f9e 80%,#6c93b3 100%);
+    overflow:hidden;
+    padding:0;
+  }
+  .hero .stars{position:absolute;inset:0;opacity:.7;}
+  .hero .glow-band{
+    position:absolute;left:0;right:0;bottom:18%;height:46%;
+    background:radial-gradient(120% 90% at 70% 100%, rgba(224,122,56,.55), rgba(224,122,56,.12) 45%, transparent 70%);
+    mix-blend-mode:screen;pointer-events:none;
+  }
+  .hero svg.ridges{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;display:block;}
+  .hero-inner{position:relative;z-index:3;padding:0 24px 64px;max-width:var(--maxw);margin:0 auto;width:100%;}
+  .hero-top{
+    position:absolute;top:0;left:0;right:0;z-index:4;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:24px;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.22em;font-size:14px;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
+  .brand .mk{width:22px;height:22px;display:inline-block;}
+  .hero-meta{font-family:'Oswald',sans-serif;letter-spacing:.18em;font-size:12px;color:var(--sky-light);text-transform:uppercase;}
+  .hero h1{
+    font-family:'Shippori Mincho',serif;
+    font-weight:800;
+    font-size:clamp(52px,12vw,140px);
+    line-height:.96;
+    letter-spacing:.04em;
+    text-shadow:0 4px 40px rgba(0,0,0,.35);
+  }
+  .hero h1 .en{
+    display:block;font-family:'Oswald',sans-serif;font-weight:300;
+    font-size:clamp(13px,2.4vw,20px);letter-spacing:.5em;
+    color:var(--sky-light);margin-bottom:18px;text-transform:uppercase;text-shadow:none;
+  }
+  .hero .lede{
+    margin-top:26px;max-width:46ch;font-size:clamp(15px,2vw,18px);
+    color:#dde7ef;line-height:1.9;text-shadow:0 2px 14px rgba(0,0,0,.4);
+  }
+  .hero .facts-strip{
+    display:flex;flex-wrap:wrap;gap:0;margin-top:36px;
+    border:1px solid rgba(255,255,255,.22);border-radius:12px;
+    background:rgba(10,22,34,.34);backdrop-filter:blur(6px);overflow:hidden;
+  }
+  .hero .facts-strip > div{
+    padding:16px 24px;flex:1 1 auto;min-width:140px;
+    border-right:1px solid rgba(255,255,255,.16);
+  }
+  .hero .facts-strip > div:last-child{border-right:none;}
+  .hero .facts-strip .lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--sky-light);text-transform:uppercase;}
+  .hero .facts-strip .val{font-family:'Shippori Mincho',serif;font-weight:700;font-size:19px;margin-top:4px;}
+  .scroll-hint{
+    position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;
+    font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.65);
+    text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+  /* ====== 確定事項 BOX ====== */
+  .confirmed{background:var(--alpine);color:var(--snow);position:relative;}
+  .confirmed .kicker{color:var(--glow);}
+  .confirmed .kicker::before{background:var(--glow);}
+  .confirmed h2{color:var(--snow);font-family:'Shippori Mincho',serif;}
+  .confirmed-grid{
+    display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:8px;
+  }
+  .cfact{
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);
+    border-radius:var(--r);padding:24px 26px;position:relative;overflow:hidden;
+  }
+  .cfact .ico{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.2em;color:var(--sky-light);text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+  .cfact .ico svg{width:16px;height:16px;}
+  .cfact h3{font-family:'Shippori Mincho',serif;font-size:23px;margin-top:10px;font-weight:700;line-height:1.4;}
+  .cfact p{color:#cdd9e3;font-size:14.5px;margin-top:6px;}
+  .span4{grid-column:span 4;}
+  .span6{grid-column:span 6;}
+  .span8{grid-column:span 8;}
+  .span12{grid-column:span 12;}
+
+  /* timeline inside confirmed */
+  .timeline{display:flex;flex-wrap:wrap;gap:0;margin-top:14px;}
+  .tl{flex:1 1 0;min-width:120px;position:relative;padding:18px 18px 18px 0;}
+  .tl::before{content:"";position:absolute;top:26px;left:0;right:0;height:2px;background:rgba(255,255,255,.18);}
+  .tl .dot{width:13px;height:13px;border-radius:50%;background:var(--glow);position:relative;z-index:2;box-shadow:0 0 0 4px rgba(224,122,56,.22);}
+  .tl .d{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.1em;font-size:14px;color:var(--sky-light);margin-top:14px;}
+  .tl .t{font-family:'Shippori Mincho',serif;font-size:17px;font-weight:600;margin-top:2px;}
+  .tl .s{font-size:13px;color:#bcc9d4;margin-top:3px;}
+
+  .undecided-note{
+    margin-top:30px;display:flex;align-items:flex-start;gap:16px;
+    background:linear-gradient(90deg,rgba(224,122,56,.16),rgba(224,122,56,.04));
+    border:1px solid rgba(224,122,56,.4);border-left:4px solid var(--glow);
+    border-radius:12px;padding:20px 24px;
+  }
+  .undecided-note .badge{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;background:var(--glow);color:#1a0f06;padding:5px 12px;border-radius:6px;white-space:nowrap;text-transform:uppercase;}
+  .undecided-note p{font-size:15px;color:#e9eef2;}
+  .undecided-note strong{color:#fff;}
+
+  /* ====== ROUTES ====== */
+  .routes{background:var(--paper);}
+  .route-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start;}
+  .rcard{
+    background:var(--snow);border:1px solid var(--line);border-radius:var(--r);
+    overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 1px 0 rgba(0,0,0,.02),0 24px 48px -32px rgba(21,48,76,.4);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+  }
+  .rcard:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(21,48,76,.55);}
+  .rcard-top{
+    position:relative;padding:26px 26px 22px;color:var(--snow);overflow:hidden;
+    background:linear-gradient(155deg,var(--alpine-2),var(--alpine));
+  }
+  .rcard-top svg.mini{position:absolute;right:-10px;bottom:-6px;width:160px;opacity:.5;}
+  .rcard .num{font-family:'Oswald',sans-serif;font-weight:700;font-size:56px;line-height:1;color:rgba(255,255,255,.16);position:absolute;top:14px;right:22px;}
+  .rcard .rkick{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sky-light);}
+  .rcard .rname{font-family:'Shippori Mincho',serif;font-weight:800;font-size:24px;margin-top:8px;line-height:1.35;position:relative;z-index:2;}
+  .rcard .rpath{font-size:12.5px;color:#bdcedd;margin-top:10px;position:relative;z-index:2;font-family:'Oswald',sans-serif;letter-spacing:.03em;}
+  .rcard .tagline{
+    display:inline-block;margin-top:14px;font-size:12px;font-weight:700;
+    background:var(--glow);color:#1a0f06;padding:4px 12px;border-radius:30px;position:relative;z-index:2;
+  }
+  .rcard-body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:0;}
+  .stat-row{display:flex;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:18px;}
+  .stat-row > div{flex:1;padding:12px 10px;text-align:center;border-right:1px solid var(--line);}
+  .stat-row > div:last-child{border-right:none;}
+  .stat-row .sv{font-family:'Oswald',sans-serif;font-weight:600;font-size:21px;color:var(--alpine);line-height:1.1;}
+  .stat-row .sl{font-size:10.5px;color:var(--stone-light);letter-spacing:.04em;margin-top:3px;}
+  .diff-rows{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+  .diff-rows .dr{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;}
+  .diff-rows .dr .dl{color:var(--stone);font-weight:500;}
+  .stars{font-family:'Oswald',sans-serif;letter-spacing:.05em;font-size:15px;color:var(--glow-deep);}
+  .stars .off{color:var(--line);}
+  .day-list{border-top:1px dashed var(--line);padding-top:16px;display:flex;flex-direction:column;gap:14px;}
+  .day{display:flex;gap:14px;}
+  .day .dchip{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:12px;letter-spacing:.05em;
+    background:var(--glacier);color:var(--alpine);padding:6px 9px;border-radius:7px;height:fit-content;white-space:nowrap;text-align:center;line-height:1.25;
+  }
+  .day .dchip small{display:block;font-size:9px;color:var(--stone);font-weight:500;letter-spacing:.04em;}
+  .day .dtext{font-size:13px;color:var(--ink);line-height:1.7;}
+  .day .dtext .ct{font-family:'Oswald',sans-serif;color:var(--sky);font-weight:600;}
+  .day .dtext .stay{display:inline-block;margin-top:4px;font-size:11.5px;color:var(--glow-deep);font-weight:700;}
+  .feat-list{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:7px;}
+  .feat-list li{font-size:13px;color:var(--stone);padding-left:20px;position:relative;line-height:1.6;}
+  .feat-list li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;transform:rotate(45deg);background:var(--sky);}
+  .review{
+    margin-top:18px;background:var(--paper-2);border-radius:10px;padding:16px 18px;position:relative;
+    font-family:'Shippori Mincho',serif;font-size:13.5px;line-height:1.85;color:#3a4651;font-style:italic;
+  }
+  .review::before{content:"\201C";font-family:'Shippori Mincho',serif;position:absolute;top:-2px;left:8px;font-size:40px;color:var(--line);}
+  .review .who{display:block;font-family:'Oswald',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.16em;color:var(--stone-light);margin-top:8px;text-transform:uppercase;}
+  .access{margin-top:16px;font-size:12.5px;color:var(--stone);line-height:1.7;}
+  .access .ah{display:flex;align-items:center;gap:7px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.16em;color:var(--alpine);text-transform:uppercase;margin-bottom:6px;}
+  .access .ah svg{width:14px;height:14px;}
+
+  /* ====== TABLE ====== */
+  .compare{background:var(--alpine);color:var(--snow);}
+  .compare .kicker{color:var(--glow);}
+  .compare .kicker::before{background:var(--glow);}
+  .compare h2{color:var(--snow);}
+  .compare .sec-head p{color:#bcccd9;}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);border:1px solid rgba(255,255,255,.16);}
+  table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px;}
+  thead th{
+    background:rgba(255,255,255,.07);font-family:'Shippori Mincho',serif;font-weight:700;
+    padding:18px 16px;text-align:left;font-size:15px;border-bottom:2px solid rgba(255,255,255,.2);
+    white-space:nowrap;
+  }
+  thead th:first-child{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky-light);font-weight:600;}
+  thead th .rt{font-family:'Oswald',sans-serif;display:block;font-size:10px;letter-spacing:.16em;color:var(--sky-light);font-weight:500;margin-bottom:3px;text-transform:uppercase;}
+  tbody th{
+    text-align:left;font-weight:700;padding:15px 16px;color:#cdd9e3;font-size:13px;
+    background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.1);white-space:nowrap;font-family:'Noto Sans JP';
+  }
+  tbody td{padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.1);border-left:1px solid rgba(255,255,255,.06);vertical-align:top;}
+  tbody tr:hover td,tbody tr:hover th{background:rgba(255,255,255,.05);}
+  tbody td .big{font-family:'Oswald',sans-serif;font-weight:600;font-size:16px;}
+  td .star{color:var(--glow);font-family:'Oswald';letter-spacing:.04em;}
+  td .star .off{color:rgba(255,255,255,.22);}
+  .mk-good{color:#7fd6a3;font-weight:700;}
+  .mk-best{color:var(--glow);font-weight:700;}
+  .mk-mid{color:var(--sky-light);font-weight:700;}
+  .verdict td{font-size:13px;color:#dbe4ec;line-height:1.6;}
+  .verdict th{color:var(--glow);}
+
+  /* ====== MEDIA / VIDEOS ====== */
+  .media{background:var(--paper);}
+  .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .vid{
+    display:block;background:var(--snow);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s;
+  }
+  .vid:hover{transform:translateY(-4px);box-shadow:0 24px 44px -28px rgba(21,48,76,.5);}
+  .vid .thumb{position:relative;aspect-ratio:16/9;background:var(--alpine);overflow:hidden;}
+  .vid .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+  .vid:hover .thumb img{transform:scale(1.06);}
+  .vid .play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,rgba(10,22,34,.05),rgba(10,22,34,.35));
+  }
+  .vid .play span{
+    width:54px;height:54px;border-radius:50%;background:rgba(224,122,56,.95);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.3);
+    transition:transform .3s;
+  }
+  .vid:hover .play span{transform:scale(1.1);}
+  .vid .play svg{width:20px;height:20px;margin-left:3px;}
+  .vid .tag{position:absolute;top:10px;left:10px;font-family:'Oswald';font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(10,22,34,.78);color:#fff;padding:4px 9px;border-radius:5px;}
+  .vid .vmeta{padding:16px 18px;}
+  .vid .vtitle{font-family:'Shippori Mincho',serif;font-weight:700;font-size:15.5px;line-height:1.5;}
+  .vid .vsub{font-size:12px;color:var(--stone-light);margin-top:6px;font-family:'Oswald';letter-spacing:.04em;}
+
+  /* ====== LINKS ====== */
+  .links{background:var(--paper-2);}
+  .link-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 40px;}
+  .link-group h3{
+    font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--glow-deep);padding-bottom:12px;margin-bottom:6px;border-bottom:2px solid var(--line);
+    display:flex;align-items:center;gap:9px;
+  }
+  .link-group h3 svg{width:16px;height:16px;}
+  .llist{list-style:none;}
+  .llist li a{
+    display:flex;align-items:center;gap:12px;padding:12px 4px;text-decoration:none;color:var(--ink);
+    border-bottom:1px solid var(--line);transition:background .2s,padding .2s;font-size:14px;
+  }
+  .llist li:last-child a{border-bottom:none;}
+  .llist li a:hover{background:rgba(58,120,173,.07);padding-left:10px;color:var(--alpine);}
+  .llist .fav{width:30px;height:30px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--glacier);color:var(--alpine);font-family:'Oswald';font-weight:600;font-size:11px;}
+  .llist .ltxt{flex:1;line-height:1.4;}
+  .llist .ltxt small{display:block;color:var(--stone-light);font-size:11.5px;font-family:'Oswald';letter-spacing:.02em;}
+  .llist .arr{color:var(--stone-light);flex-shrink:0;transition:transform .2s;}
+  .llist li a:hover .arr{transform:translateX(3px);color:var(--glow);}
+
+  /* ====== NOTES ====== */
+  .notes{background:var(--paper);}
+  .note-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .note{
+    background:var(--snow);border:1px solid var(--line);border-left:4px solid var(--sky);
+    border-radius:10px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .note.warn{border-left-color:var(--glow);}
+  .note .ni{
+    width:40px;height:40px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:var(--glacier);color:var(--alpine);
+  }
+  .note.warn .ni{background:rgba(224,122,56,.13);color:var(--glow-deep);}
+  .note .ni svg{width:21px;height:21px;}
+  .note h4{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;}
+  .note p{font-size:13.5px;color:var(--stone);margin-top:4px;}
+
+  /* ====== FOOTER ====== */
+  footer{background:var(--night);color:#9fb0bf;padding:56px 0 40px;text-align:center;}
+  footer .fm{font-family:'Shippori Mincho',serif;font-size:26px;color:#fff;font-weight:700;letter-spacing:.06em;}
+  footer .fen{font-family:'Oswald';letter-spacing:.4em;font-size:12px;color:var(--sky-light);text-transform:uppercase;margin-top:8px;}
+  footer .fnote{font-size:12.5px;margin-top:20px;color:#6b7c8a;max-width:54ch;margin-left:auto;margin-right:auto;line-height:1.8;}
+  footer .ridge{margin-bottom:36px;opacity:.5;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ====== RESPONSIVE ====== */
+  @media(max-width:960px){
+    .route-cards{grid-template-columns:1fr;max-width:560px;margin:0 auto;}
+    .vid-grid{grid-template-columns:repeat(2,1fr);}
+    .span4,.span6,.span8{grid-column:span 12;}
+    .confirmed-grid{gap:14px;}
+  }
+  @media(max-width:680px){
+    section{padding:54px 0;}
+    .wrap{padding:0 18px;}
+    .hero-inner{padding:0 18px 48px;}
+    .vid-grid{grid-template-columns:1fr;}
+    .link-cols{grid-template-columns:1fr;gap:8px;}
+    .note-grid{grid-template-columns:1fr;}
+    .hero .facts-strip > div{flex:1 1 50%;border-right:1px solid rgba(255,255,255,.16);}
+    .timeline{flex-direction:column;}
+    .tl{padding:0 0 0 26px;}
+    .tl::before{top:0;bottom:0;left:6px;right:auto;width:2px;height:auto;}
+    .tl .dot{position:absolute;left:0;top:4px;}
+    .tl .d{margin-top:0;}
+    .undecided-note{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero" data-screen-label="ヒーロー">
+  <svg class="stars" preserveAspectRatio="none" viewBox="0 0 1000 600" aria-hidden="true">
+    <g fill="#ffffff">
+      <circle cx="120" cy="80" r="1.4" opacity=".8"/><circle cx="260" cy="140" r="1" opacity=".5"/>
+      <circle cx="420" cy="60" r="1.6" opacity=".9"/><circle cx="560" cy="120" r="1" opacity=".6"/>
+      <circle cx="700" cy="70" r="1.3" opacity=".7"/><circle cx="840" cy="150" r="1.1" opacity=".5"/>
+      <circle cx="930" cy="90" r="1.5" opacity=".8"/><circle cx="180" cy="200" r="1" opacity=".4"/>
+      <circle cx="640" cy="210" r="1.2" opacity=".6"/><circle cx="360" cy="180" r="1" opacity=".5"/>
+      <circle cx="500" cy="40" r="1" opacity=".5"/><circle cx="780" cy="40" r="1.2" opacity=".6"/>
+    </g>
+  </svg>
+  <div class="glow-band"></div>
+
+  <div class="hero-top">
+    <div class="brand"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="#e07a38" stroke-width="2" stroke-linejoin="round"><path d="M3 20 L9 7 L13 14 L16 9 L21 20 Z"/></svg>YARI 2026</div>
+    <div class="hero-meta">North Alps · 2N3D</div>
+  </div>
+
+  <!-- mountain ridges -->
+  <svg class="ridges" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+    <path d="M0,420 L0,250 L160,170 L300,230 L430,150 L560,210 L700,120 L760,40 L820,120 L960,180 L1100,110 L1260,200 L1440,150 L1440,420 Z" fill="#0c1f33"/>
+    <path d="M0,420 L0,320 L200,260 L360,300 L520,240 L680,290 L760,150 L840,290 L1000,250 L1180,300 L1360,260 L1440,300 L1440,420 Z" fill="#091825" opacity=".9"/>
+    <path d="M740,150 L760,40 L780,150 L772,150 L766,116 L760,150 Z" fill="#16344f"/>
+    <path d="M756,120 L760,40 L764,120 Z" fill="#f6f3ec" opacity=".85"/>
+  </svg>
+
+  <div class="hero-inner reveal">
+    <h1><span class="en">Mt. Yarigatake · 3,180m</span>槍ヶ岳<span style="font-size:.42em;letter-spacing:.06em;">へ、いざ。</span></h1>
+    <p class="lede">近所のお父さん3人が挑む、北アルプスの槍。2026年の夏、2泊3日の縦走計画。3つの候補ルートを比べて、登る道を決めよう。</p>
+    <div class="facts-strip">
+      <div><div class="lbl">Members</div><div class="val">お父さん 3人</div></div>
+      <div><div class="lbl">Dates</div><div class="val">7/31 — 8/2</div></div>
+      <div><div class="lbl">Style</div><div class="val">2泊3日 / 山小屋</div></div>
+      <div><div class="lbl">Access</div><div class="val">相乗り 1台</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL<span style="font-size:16px;line-height:1;">↓</span></div>
+</header>
+
+<!-- ============ 確定事項 ============ -->
+<section class="confirmed" data-screen-label="確定事項">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Confirmed · 今日決まったこと</div>
+      <h2>まず、決まっていること。</h2>
+      <p>メンバー・日程・移動・宿泊はすでに確定。残るは「どの道で登るか」だけ。</p>
+    </div>
+
+    <div class="confirmed-grid reveal">
+      <div class="cfact span4">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><circle cx="16" cy="9" r="2.4"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M15.5 20c0-2.2 1.4-3.6 4.5-3.6"/></svg>Members</div>
+        <h3>近所のお父さん 3人</h3>
+        <p>気心の知れた3人での挑戦。</p>
+      </div>
+      <div class="cfact span4">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>Schedule</div>
+        <h3>2026年 7/31〜8/2</h3>
+        <p>金・土・日の2泊3日。前夜に横浜を出発。</p>
+      </div>
+      <div class="cfact span4">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></svg>Transport &amp; Stay</div>
+        <h3>車で相乗り・山小屋2泊</h3>
+        <p>3人のうち1人の車で。2泊目は全ルート共通で<strong style="color:#fff;">槍ヶ岳山荘</strong>。</p>
+      </div>
+
+      <div class="cfact span12">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>Timeline · 4日間の流れ</div>
+        <div class="timeline">
+          <div class="tl"><div class="dot"></div><div class="d">7/30 THU</div><div class="t">前夜・深夜出発</div><div class="s">深夜0時頃 横浜を発ち現地へ</div></div>
+          <div class="tl"><div class="dot"></div><div class="d">7/31 FRI</div><div class="t">1日目・入山</div><div class="s">早朝から歩き始め → 1泊目の小屋へ</div></div>
+          <div class="tl"><div class="dot"></div><div class="d">8/1 SAT</div><div class="t">2日目・縦走</div><div class="s">稜線を行き槍ヶ岳山荘へ / 穂先アタック</div></div>
+          <div class="tl"><div class="dot"></div><div class="d">8/2 SUN</div><div class="t">3日目・下山</div><div class="s">上高地 or 沢渡へ下山</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="undecided-note reveal">
+      <span class="badge">未決定</span>
+      <p><strong>ルートは3人で持ち帰って検討 → 次回の打ち合わせで決定。</strong>　下の3つの候補を見比べて、自分たちの体力・好みに合う道を選ぼう。2泊目はどのルートでも槍ヶ岳山荘で合流イメージ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROUTES ============ -->
+<section class="routes" data-screen-label="3ルート候補">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">3 Candidate Routes · 候補ルート</div>
+      <h2>登る道は、3つ。</h2>
+      <p>どれも歩行距離は約37km前後。違うのは「きつさ」と「展望」と「車の回収」。じっくり見比べて。</p>
+    </div>
+
+    <div class="route-cards">
+
+      <!-- ROUTE 1 -->
+      <article class="rcard reveal">
+        <div class="rcard-top">
+          <svg class="mini" viewBox="0 0 200 120" fill="rgba(255,255,255,.5)"><path d="M0,120 L40,55 L70,85 L100,40 L130,75 L160,30 L200,120 Z"/></svg>
+          <div class="num">01</div>
+          <div class="rkick">Route · Hidasawa</div>
+          <div class="rname">飛騨沢ルート</div>
+          <div class="rpath">新穂高 → 飛騨沢 → 槍ヶ岳 → 槍沢 → 上高地</div>
+          <span class="tagline">最短・静かな縦走</span>
+        </div>
+        <div class="rcard-body">
+          <div class="stat-row">
+            <div><div class="sv">37<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
+            <div><div class="sv">17:50</div><div class="sl">コースタイム</div></div>
+            <div><div class="sv">+2,100</div><div class="sl">累積標高 m</div></div>
+          </div>
+          <div class="diff-rows">
+            <div class="dr"><span class="dl">技術難易度</span><span class="stars">★★<span class="off">★</span></span></div>
+            <div class="dr"><span class="dl">体力度</span><span class="stars">★★★</span></div>
+          </div>
+          <div class="day-list">
+            <div class="day"><div class="dchip">DAY 1<small>4:30</small></div><div class="dtext">新穂高温泉 <span class="ct">→</span> 穂高平小屋 <span class="ct">→</span> 白出沢出合 <span class="ct">→</span> 槍平小屋<span class="stay">▸ 1泊目：槍平小屋</span></div></div>
+            <div class="day"><div class="dchip">DAY 2<small>6:00</small></div><div class="dtext">槍平 <span class="ct">→</span> 飛騨沢千丈乗越分岐 <span class="ct">→</span> 千丈乗越 <span class="ct">→</span> 槍ヶ岳山荘 <span class="ct">→</span> 穂先(往復30分)<span class="stay">▸ 2泊目：槍ヶ岳山荘</span></div></div>
+            <div class="day"><div class="dchip">DAY 3<small>7:20</small></div><div class="dtext">山荘 <span class="ct">→</span> 槍沢ロッヂ <span class="ct">→</span> 横尾 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 上高地</div></div>
+          </div>
+          <ul class="feat-list">
+            <li>槍ヶ岳への最短ルートとして知られる</li>
+            <li>登山者が少なく静かな山行が楽しめる</li>
+            <li>1日目が楽で行程に余裕／2日目の飛騨沢の大斜面がきつい</li>
+          </ul>
+          <div class="review">千丈沢乗越からは登っても登っても辿り着かない感覚。1日で高低差2,100mがこんなにも苦しいとは。でも山荘に着いた時の達成感は格別だった。<span class="who">— 山行記録より</span></div>
+          <div class="access">
+            <div class="ah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Access</div>
+            新穂高IN・上高地OUTで<strong>車の回収が必要</strong>。沢渡(1日800円)に停めてシャトルバスでIN、または新穂高に停めて下山後に回送サービス(南安タクシー等)を利用。
+          </div>
+        </div>
+      </article>
+
+      <!-- ROUTE 2 -->
+      <article class="rcard reveal">
+        <div class="rcard-top">
+          <svg class="mini" viewBox="0 0 200 120" fill="rgba(255,255,255,.5)"><path d="M0,120 L40,55 L70,85 L100,40 L130,75 L160,30 L200,120 Z"/></svg>
+          <div class="num">02</div>
+          <div class="rkick">Route · Nishikama</div>
+          <div class="rname">双六・西鎌尾根ルート</div>
+          <div class="rpath">新穂高 → 鏡平 → 双六小屋 → 西鎌尾根 → 槍ヶ岳 → 上高地</div>
+          <span class="tagline">展望・稜線歩き最高</span>
+        </div>
+        <div class="rcard-body">
+          <div class="stat-row">
+            <div><div class="sv">37.5<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
+            <div><div class="sv">21:45</div><div class="sl">コースタイム</div></div>
+            <div><div class="sv">+2,200</div><div class="sl">累積標高 m</div></div>
+          </div>
+          <div class="diff-rows">
+            <div class="dr"><span class="dl">技術難易度</span><span class="stars">★★★</span></div>
+            <div class="dr"><span class="dl">体力度</span><span class="stars">★★★★</span></div>
+          </div>
+          <div class="day-list">
+            <div class="day"><div class="dchip">DAY 1<small>7:20</small></div><div class="dtext">新穂高温泉 <span class="ct">→</span> わさび平 <span class="ct">→</span> 秩父沢出合 <span class="ct">→</span> 鏡平山荘 <span class="ct">→</span> 弓折乗越 <span class="ct">→</span> 双六小屋<span class="stay">▸ 1泊目：双六小屋</span></div></div>
+            <div class="day"><div class="dchip">DAY 2<small>6:25</small></div><div class="dtext">双六 <span class="ct">→</span> 樅沢岳 <span class="ct">→</span> 硫黄乗越 <span class="ct">→</span> 左俣乗越 <span class="ct">→</span> 千丈乗越 <span class="ct">→</span> 槍ヶ岳山荘 <span class="ct">→</span> 穂先<span class="stay">▸ 2泊目：槍ヶ岳山荘</span></div></div>
+            <div class="day"><div class="dchip">DAY 3<small>8:00</small></div><div class="dtext">山荘 <span class="ct">→</span> 槍沢 <span class="ct">→</span> 横尾 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 上高地(①の3日目と同じ)</div></div>
+          </div>
+          <ul class="feat-list">
+            <li>3ルート中で最も展望・稜線歩きが充実</li>
+            <li>鏡平の「逆さ槍」、双六の「天空の滑走路」、西鎌の360度展望</li>
+            <li>西鎌尾根に鎖場あり／初日が最長・最ハード(約12.7km)</li>
+          </ul>
+          <div class="review">早朝の双六岳・天空の滑走路、西鎌尾根の360度アルプス展望、山荘から見る夕陽——北アルプスの醍醐味をフルに味わえる山行。ピークハントだけにとどまらない満足度の高さが印象的。<span class="who">— 山行記録より</span></div>
+          <div class="access">
+            <div class="ah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Access</div>
+            ①と同じく新穂高IN・上高地OUTで<strong>車の回収が必要</strong>。沢渡からシャトルバスでIN、または回送サービスを利用。
+          </div>
+        </div>
+      </article>
+
+      <!-- ROUTE 3 -->
+      <article class="rcard reveal">
+        <div class="rcard-top">
+          <svg class="mini" viewBox="0 0 200 120" fill="rgba(255,255,255,.5)"><path d="M0,120 L40,55 L70,85 L100,40 L130,75 L160,30 L200,120 Z"/></svg>
+          <div class="num">03</div>
+          <div class="rkick">Route · Yarisawa</div>
+          <div class="rname">槍沢ピストン</div>
+          <div class="rpath">上高地 → 槍沢 → 槍ヶ岳(往復)</div>
+          <span class="tagline">定番・シンプル・回収不要</span>
+        </div>
+        <div class="rcard-body">
+          <div class="stat-row">
+            <div><div class="sv">37.2<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
+            <div><div class="sv">17:35</div><div class="sl">コースタイム</div></div>
+            <div><div class="sv">+2,122</div><div class="sl">累積標高 m</div></div>
+          </div>
+          <div class="diff-rows">
+            <div class="dr"><span class="dl">技術難易度</span><span class="stars">★★<span class="off">★</span></span></div>
+            <div class="dr"><span class="dl">体力度</span><span class="stars">★★★</span></div>
+          </div>
+          <div class="day-list">
+            <div class="day"><div class="dchip">DAY 1<small>4:45</small></div><div class="dtext">上高地BT <span class="ct">→</span> 明神 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 横尾 <span class="ct">→</span> 槍沢ロッヂ<span class="stay">▸ 1泊目：槍沢ロッヂ</span></div></div>
+            <div class="day"><div class="dchip">DAY 2<small>5:30</small></div><div class="dtext">槍沢ロッヂ <span class="ct">→</span> ババ平 <span class="ct">→</span> 天狗原分岐 <span class="ct">→</span> グリーンバンド <span class="ct">→</span> 槍ヶ岳山荘 <span class="ct">→</span> 穂先<span class="stay">▸ 2泊目：槍ヶ岳山荘</span></div></div>
+            <div class="day"><div class="dchip">DAY 3<small>7:20</small></div><div class="dtext">山荘 <span class="ct">→</span> 槍沢ロッヂ <span class="ct">→</span> 横尾 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 上高地</div></div>
+          </div>
+          <ul class="feat-list">
+            <li>最もポピュラーで歩きやすい・谷筋歩き中心</li>
+            <li>信州山のグレーディング：体力度8・技術レベルC</li>
+            <li>ハイシーズンは穂先で渋滞(山頂往復3時間のことも)</li>
+          </ul>
+          <div class="review">定番ルートで安心感がある。1泊2日で挑んだが体力的にきつかった——余裕を持って2泊3日の行程が安心。ハイシーズンは人が多く穂先で大渋滞する。<span class="who">— 山行記録より</span></div>
+          <div class="access">
+            <div class="ah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Access</div>
+            沢渡駐車場(1日800円)に停めてシャトルバスで上高地へ。下山後も同じルートで戻れるので<strong>車の回収が不要 → 最もシンプル</strong>。
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARE TABLE ============ -->
+<section class="compare" data-screen-label="比較表">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">At a Glance · ひと目で比較</div>
+      <h2>3ルート、横並び。</h2>
+      <p>※ スマホは横スクロールで全項目を確認できます。</p>
+    </div>
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th><span class="rt">Route 01</span>① 飛騨沢</th>
+            <th><span class="rt">Route 02</span>② 双六・西鎌</th>
+            <th><span class="rt">Route 03</span>③ 槍沢往復</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>歩行距離</th><td><span class="big">約37</span> km</td><td><span class="big">約37.5</span> km</td><td><span class="big">約37.2</span> km</td></tr>
+          <tr><th>総コースタイム</th><td><span class="big">17:50</span></td><td><span class="big">21:45</span> <span style="color:var(--glow);font-size:12px;">最長</span></td><td><span class="big">17:35</span> <span style="color:#7fd6a3;font-size:12px;">最短</span></td></tr>
+          <tr><th>技術難易度</th><td><span class="star">★★<span class="off">★</span></span></td><td><span class="star">★★★</span></td><td><span class="star">★★<span class="off">★</span></span></td></tr>
+          <tr><th>体力度</th><td><span class="star">★★★</span></td><td><span class="star">★★★★</span></td><td><span class="star">★★★</span></td></tr>
+          <tr><th>稜線・展望</th><td><span class="mk-mid">○</span></td><td><span class="mk-best">◎</span> 西鎌が長い</td><td>△ 谷筋中心</td></tr>
+          <tr><th>混雑度</th><td><span class="mk-good">少ない</span></td><td><span class="mk-good">少ない</span></td><td>多い</td></tr>
+          <tr><th>1泊目の宿</th><td>槍平小屋</td><td>双六小屋</td><td>槍沢ロッヂ</td></tr>
+          <tr><th>車の回収</th><td>要(回送 or 沢渡バスIN)</td><td>要(同左)</td><td><span class="mk-good">不要</span>(沢渡IN/OUT)</td></tr>
+          <tr class="verdict"><th>こんな人に</th><td>静かな山行・<br>体力に自信あり</td><td>展望・<br>稜線重視</td><td>定番・初挑戦・<br>シンプルに</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section class="media" data-screen-label="動画">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Watch · 予習動画</div>
+      <h2>歩く前に、目で予習。</h2>
+      <p>各ルートのリアルな映像で、道のイメージとモチベーションを高めよう。サムネイルをタップでYouTubeへ。</p>
+    </div>
+    <div class="vid-grid reveal" id="vidGrid"></div>
+  </div>
+</section>
+
+<!-- ============ LINKS ============ -->
+<section class="links" data-screen-label="参考リンク">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">References · 参考リンク</div>
+      <h2>下調べは、ここから。</h2>
+    </div>
+    <div class="link-cols reveal" id="linkCols"></div>
+  </div>
+</section>
+
+<!-- ============ NOTES ============ -->
+<section class="notes" data-screen-label="注意事項">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Before You Go · 注意事項</div>
+      <h2>安全に、楽しく。</h2>
+    </div>
+    <div class="note-grid reveal" id="noteGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <svg class="ridge" width="220" height="46" viewBox="0 0 220 46" fill="none" stroke="#3a78ad" stroke-width="1.6"><path d="M0,46 L40,18 L62,30 L88,8 L104,2 L120,8 L150,26 L180,12 L220,46"/></svg>
+  <div class="fm">いい山行を。</div>
+  <div class="fen">Mt. Yarigatake · Summer 2026</div>
+  <p class="fnote">この計画書は3人の検討用まとめです。最新のコースタイム・小屋予約状況・気象は必ず公式サイトと現地情報でご確認ください。山の天気は変わりやすく、無理のない判断を最優先に。</p>
+</footer>
+
+<script>
+  /* ---- VIDEOS ---- */
+  const videos = [
+    {id:'zRkHwMg77Fg', t:'プロガイドが歩く 槍沢ルート', s:'2024.07 撮影', tag:'Route 03'},
+    {id:'eQaBpp6bKps', t:'新穂高 → 槍ヶ岳 飛騨沢ルート', s:'2024.08 撮影', tag:'Route 01'},
+    {id:'PunQokGpSEY', t:'飛騨沢 最短コース徹底解説', s:'2024 撮影', tag:'Route 01'},
+    {id:'Pp7mIo55emM', t:'西鎌尾根 双六・西鎌ルート', s:'テント泊 山行', tag:'Route 02'},
+    {id:'hzJ6aaH91fE', t:'上高地から槍ヶ岳 槍沢ルート', s:'2024.08 撮影', tag:'Route 03'},
+    {id:'jUJgK_0wLkI', t:'槍の穂先の登り方を徹底解説', s:'穂先アタック', tag:'核心部'},
+  ];
+  const playSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
+  document.getElementById('vidGrid').innerHTML = videos.map(v=>`
+    <a class="vid" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+      <div class="thumb">
+        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.t}" loading="lazy"
+             onerror="this.style.display='none'">
+        <span class="tag">${v.tag}</span>
+        <span class="play"><span>${playSvg}</span></span>
+      </div>
+      <div class="vmeta"><div class="vtitle">${v.t}</div><div class="vsub">YouTube · ${v.s}</div></div>
+    </a>`).join('');
+
+  /* ---- LINKS ---- */
+  const linkGroups = [
+    {h:'公式・信頼性の高い情報', icon:'<path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.5 7.1 17.2 8 11.7 4 7.8 9.5 7z"/>', items:[
+      {t:'槍ヶ岳山荘グループ ルート案内', d:'yarigatake.co.jp', u:'https://www.yarigatake.co.jp/climbing-info/route/', f:'山荘'},
+      {t:'新穂高→槍ヶ岳 ルート詳細', d:'yarigatake.co.jp', u:'https://www.yarigatake.co.jp/route/335/', f:'山荘'},
+      {t:'THE JAPAN ALPS 槍沢ルート', d:'thejapanalps.com', u:'https://thejapanalps.com/route/mt-yarigatake/route-01/', f:'ALPS'},
+      {t:'THE JAPAN ALPS 西鎌尾根ルート', d:'thejapanalps.com', u:'https://thejapanalps.com/route/mt-yarigatake/route-03/', f:'ALPS'},
+      {t:'上高地公式 マイカー規制', d:'kamikochi.or.jp', u:'https://www.kamikochi.or.jp/access/restrictions/', f:'上高地'},
+    ]},
+    {h:'車回送サービス', icon:'<path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5h-2v-1H5v1H3z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/>', items:[
+      {t:'南安タクシー（沢渡⇔新穂高 回送）', d:'nan-an.co.jp', u:'https://nan-an.co.jp/northern_alps/', f:'回送'},
+      {t:'安曇観光タクシー 陸送サービス', d:'azumikanko-taxi.co.jp', u:'https://www.azumikanko-taxi.co.jp/2011/04/040-11.html', f:'回送'},
+    ]},
+    {h:'難易度・体力度の参考', icon:'<path d="M3 20 L9 7 L13 14 L16 9 L21 20 Z"/>', items:[
+      {t:'ヤマレコ 信州山のグレーディング', d:'yamareco.com', u:'https://www.yamareco.com/modules/yamainfo/grading_detail.php?id=99', f:'グレード'},
+      {t:'山旅旅 槍ヶ岳主要5ルート難易度別', d:'yamatabitabi.com', u:'https://yamatabitabi.com/archives/126051', f:'比較'},
+      {t:'ヤマハック 槍ヶ岳4ルート徹底解説', d:'yamahack.com', u:'https://yamahack.com/1724', f:'解説'},
+    ]},
+    {h:'リアルな山行記録（口コミ）', icon:'<path d="M4 4h16v12H7l-3 3z"/>', items:[
+      {t:'双六→西鎌尾根→槍ヶ岳→上高地', d:'yamareco.com', u:'https://www.yamareco.com/modules/yamareco/detail-5878082.html', f:'記録'},
+      {t:'新穂高→飛騨沢→槍ヶ岳', d:'yamareco.com', u:'https://www.yamareco.com/modules/yamareco/detail-7210241.html', f:'記録'},
+    ]},
+  ];
+  const arrSvg = '<svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  document.getElementById('linkCols').innerHTML = linkGroups.map(g=>`
+    <div class="link-group">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">${g.icon}</svg>${g.h}</h3>
+      <ul class="llist">
+        ${g.items.map(i=>`<li><a href="${i.u}" target="_blank" rel="noopener">
+          <span class="fav">${i.f}</span>
+          <span class="ltxt">${i.t}<small>${i.d}</small></span>
+          ${arrSvg}
+        </a></li>`).join('')}
+      </ul>
+    </div>`).join('');
+
+  /* ---- NOTES ---- */
+  const notes = [
+    {w:true, ic:'<path d="M3 17l9-14 9 14H3z"/><path d="M12 9v3M12 15h.01"/>', h:'山小屋は早めの予約必須', p:'人気のため早期満室になりやすい。特に槍ヶ岳山荘は要注意。'},
+    {w:true, ic:'<path d="M12 2v6M12 22v-4M4.9 4.9l3 3M19 19l-3-3M2 12h6M22 12h-4"/><circle cx="12" cy="12" r="2"/>', h:'7月末は残雪の可能性', p:'特に槍沢。アイゼン or チェーンスパイクの要否を直前に確認。'},
+    {w:false, ic:'<path d="M13 2L3 14h7l-1 8 10-12h-7z"/>', h:'午後は雷雨が多い', p:'夏山の鉄則。午前中に核心部を通過する行程を基本に。'},
+    {w:false, ic:'<path d="M12 2a7 7 0 00-7 7c0 3 2 5 3 7h8c1-2 3-4 3-7a7 7 0 00-7-7z"/><path d="M9 22h6"/>', h:'穂先はヘルメット推奨', p:'三点支持が基本。一歩ずつ確実に。譲り合って渋滞回避。'},
+    {w:false, ic:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>', h:'7/31(金)は平日', p:'平日のため混雑は若干緩和される見込み。'},
+  ];
+  document.getElementById('noteGrid').innerHTML = notes.map(n=>`
+    <div class="note ${n.w?'warn':''}">
+      <span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${n.ic}</svg></span>
+      <div><h4>${n.h}</h4><p>${n.p}</p></div>
+    </div>`).join('');
+
+  /* ---- REVEAL ON SCROLL ---- */
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
