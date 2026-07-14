@@ -170,7 +170,7 @@
 
   /* ====== ROUTES ====== */
   .routes{background:var(--paper);}
-  .route-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start;}
+  .route-cards{display:grid;grid-template-columns:1fr;max-width:640px;margin:0 auto;gap:26px;align-items:start;}
   .rcard{
     background:var(--snow);border:1px solid var(--line);border-radius:var(--r);
     overflow:hidden;display:flex;flex-direction:column;
@@ -255,6 +255,34 @@
   .verdict td{font-size:13px;color:#dbe4ec;line-height:1.6;}
   .verdict th{color:var(--glow);}
 
+  /* ====== COSTS ====== */
+  .costs{background:var(--paper-2);}
+  .cost-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .cost-card{background:var(--snow);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;}
+  .cost-card.wide{grid-column:span 2;}
+  .cost-card h3{
+    font-family:'Shippori Mincho',serif;font-weight:700;font-size:17px;color:var(--alpine);
+    display:flex;align-items:center;gap:9px;padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid var(--line);
+  }
+  .cost-card h3 svg{width:17px;height:17px;color:var(--glow-deep);flex-shrink:0;}
+  .cost-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .cost-list li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    border-bottom:1px dashed var(--line);padding-bottom:10px;
+  }
+  .cost-list li:last-child{border-bottom:none;padding-bottom:0;}
+  .cost-list .cl-label{font-size:13.5px;color:var(--ink);}
+  .cost-list .cl-label small{display:block;font-size:11.5px;color:var(--stone-light);margin-top:2px;font-family:'Oswald',sans-serif;letter-spacing:.02em;}
+  .cost-list .cl-amt{font-family:'Oswald',sans-serif;font-weight:600;font-size:16px;color:var(--alpine);white-space:nowrap;text-align:right;flex-shrink:0;}
+  .cost-list .cl-amt small{display:block;font-family:'Noto Sans JP',sans-serif;font-weight:500;font-size:11.5px;color:var(--stone-light);margin-top:2px;}
+  .cost-foot{margin-top:14px;font-size:12px;color:var(--stone-light);line-height:1.75;padding-top:12px;border-top:1px dashed var(--line);}
+  .cost-total{
+    grid-column:span 2;background:var(--alpine);color:var(--snow);border-radius:var(--r);
+    padding:22px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  .cost-total .ct-label{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sky-light);}
+  .cost-total .ct-note{font-size:13px;color:#cdd9e3;margin-top:4px;}
+
   /* ====== MEDIA / VIDEOS ====== */
   .media{background:var(--paper);}
   .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
@@ -304,6 +332,31 @@
   .llist .arr{color:var(--stone-light);flex-shrink:0;transition:transform .2s;}
   .llist li a:hover .arr{transform:translateX(3px);color:var(--glow);}
 
+  /* ====== PACKING ====== */
+  .packing{background:var(--paper-2);}
+  .packing-card{
+    display:flex;align-items:center;gap:22px;
+    background:var(--snow);border:1px solid var(--line);border-radius:var(--r);
+    padding:26px 30px;text-decoration:none;color:inherit;
+    box-shadow:0 1px 0 rgba(0,0,0,.02),0 24px 48px -32px rgba(21,48,76,.4);
+    transition:transform .3s,box-shadow .3s;
+  }
+  .packing-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -28px rgba(21,48,76,.5);}
+  .packing-card .pc-icon{
+    flex:0 0 auto;width:56px;height:56px;border-radius:14px;background:var(--glacier);color:var(--alpine);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .packing-card .pc-icon svg{width:28px;height:28px;}
+  .packing-card .pc-text{flex:1;min-width:0;}
+  .packing-card .pc-title{font-family:'Shippori Mincho',serif;font-weight:700;font-size:19px;color:var(--ink);}
+  .packing-card .pc-sub{font-size:13.5px;color:var(--stone);margin-top:5px;}
+  .packing-card .pc-arrow{flex:0 0 auto;color:var(--stone-light);transition:transform .2s,color .2s;}
+  .packing-card:hover .pc-arrow{transform:translateX(4px);color:var(--glow);}
+  @media(max-width:560px){
+    .packing-card{flex-wrap:wrap;padding:22px;gap:16px;}
+    .packing-card .pc-arrow{display:none;}
+  }
+
   /* ====== NOTES ====== */
   .notes{background:var(--paper);}
   .note-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
@@ -338,6 +391,8 @@
     .vid-grid{grid-template-columns:repeat(2,1fr);}
     .span4,.span6,.span8{grid-column:span 12;}
     .confirmed-grid{gap:14px;}
+    .cost-grid{grid-template-columns:1fr;}
+    .cost-card.wide,.cost-total{grid-column:span 1;}
   }
   @media(max-width:680px){
     section{padding:54px 0;}
@@ -387,10 +442,11 @@
 
   <div class="hero-inner reveal">
     <h1><span class="en">Mt. Yarigatake · 3,180m</span>槍ヶ岳<span style="font-size:.42em;letter-spacing:.06em;">へ、いざ。</span></h1>
-    <p class="lede">近所のお父さん3人が挑む、北アルプスの槍。2026年の夏、2泊3日の縦走計画。3つの候補ルートを比べて、登る道を決めよう。</p>
+    <p class="lede">近所のお父さん3人が挑む、北アルプスの槍。2026年の夏、2泊3日の縦走計画。登る道は飛騨沢ルートに決定、山小屋も2泊とも予約済み。あとは登るだけ。</p>
     <div class="facts-strip">
       <div><div class="lbl">Members</div><div class="val">お父さん 3人</div></div>
       <div><div class="lbl">Dates</div><div class="val">7/31 — 8/2</div></div>
+      <div><div class="lbl">Route</div><div class="val">飛騨沢ルート</div></div>
       <div><div class="lbl">Style</div><div class="val">2泊3日 / 山小屋</div></div>
       <div><div class="lbl">Access</div><div class="val">相乗り 1台</div></div>
     </div>
@@ -404,7 +460,7 @@
     <div class="sec-head reveal">
       <div class="kicker">Confirmed · 今日決まったこと</div>
       <h2>まず、決まっていること。</h2>
-      <p>メンバー・日程・移動・宿泊はすでに確定。残るは「どの道で登るか」だけ。</p>
+      <p>メンバー・日程・移動・宿泊・ルートまで、すべて確定。あとは体と装備を整えて当日を迎えるだけ。</p>
     </div>
 
     <div class="confirmed-grid reveal">
@@ -421,7 +477,13 @@
       <div class="cfact span4">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></svg>Transport &amp; Stay</div>
         <h3>車で相乗り・山小屋2泊</h3>
-        <p>3人のうち1人の車で。2泊目は全ルート共通で<strong style="color:#fff;">槍ヶ岳山荘</strong>。</p>
+        <p>3人のうち1人の車で。宿泊は山小屋2泊、ともに予約済み。</p>
+      </div>
+
+      <div class="cfact span12">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20 L9 7 L13 14 L16 9 L21 20 Z"/></svg>Route · 決定ルート</div>
+        <h3>飛騨沢ルートで登る</h3>
+        <p>新穂高 → 飛騨沢 → 槍ヶ岳 → 槍沢 → 上高地。1泊目は<strong style="color:#fff;">槍平小屋</strong>、2泊目は<strong style="color:#fff;">槍ヶ岳山荘</strong>——ともに予約済み。</p>
       </div>
 
       <div class="cfact span12">
@@ -436,8 +498,8 @@
     </div>
 
     <div class="undecided-note reveal">
-      <span class="badge">未決定</span>
-      <p><strong>ルートは3人で持ち帰って検討 → 次回の打ち合わせで決定。</strong>　下の3つの候補を見比べて、自分たちの体力・好みに合う道を選ぼう。2泊目はどのルートでも槍ヶ岳山荘で合流イメージ。</p>
+      <span class="badge">確定</span>
+      <p><strong>ルートは飛騨沢ルートに決定！</strong>　山小屋も槍平小屋・槍ヶ岳山荘ともに予約済み。あとは体力づくりと持ち物の準備を進めよう。</p>
     </div>
   </div>
 </section>
@@ -446,9 +508,9 @@
 <section class="routes" data-screen-label="3ルート候補">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">3 Candidate Routes · 候補ルート</div>
-      <h2>登る道は、3つ。</h2>
-      <p>どれも歩行距離は約37km前後。違うのは「きつさ」と「展望」と「車の回収」。じっくり見比べて。</p>
+      <div class="kicker">Decided Route · 決定ルート</div>
+      <h2>登る道は、飛騨沢。</h2>
+      <p>3つの候補から選んだのは、最短で静かな飛騨沢ルート。1日目は余裕をもって槍平小屋へ、2日目は飛騨沢の大斜面を登り切って槍ヶ岳山荘へ。</p>
     </div>
 
     <div class="route-cards">
@@ -465,9 +527,10 @@
         </div>
         <div class="rcard-body">
           <div class="stat-row">
-            <div><div class="sv">37<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
+            <div><div class="sv">31.6<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
             <div><div class="sv">17:50</div><div class="sl">コースタイム</div></div>
-            <div><div class="sv">+2,100</div><div class="sl">累積標高 m</div></div>
+            <div><div class="sv">+2,426</div><div class="sl">累積標高(登)m</div></div>
+            <div><div class="sv">-1,980</div><div class="sl">累積標高(下)m</div></div>
           </div>
           <div class="diff-rows">
             <div class="dr"><span class="dl">技術難易度</span><span class="stars">★★<span class="off">★</span></span></div>
@@ -491,82 +554,6 @@
         </div>
       </article>
 
-      <!-- ROUTE 2 -->
-      <article class="rcard reveal">
-        <div class="rcard-top">
-          <svg class="mini" viewBox="0 0 200 120" fill="rgba(255,255,255,.5)"><path d="M0,120 L40,55 L70,85 L100,40 L130,75 L160,30 L200,120 Z"/></svg>
-          <div class="num">02</div>
-          <div class="rkick">Route · Nishikama</div>
-          <div class="rname">双六・西鎌尾根ルート</div>
-          <div class="rpath">新穂高 → 鏡平 → 双六小屋 → 西鎌尾根 → 槍ヶ岳 → 上高地</div>
-          <span class="tagline">展望・稜線歩き最高</span>
-        </div>
-        <div class="rcard-body">
-          <div class="stat-row">
-            <div><div class="sv">37.5<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
-            <div><div class="sv">21:45</div><div class="sl">コースタイム</div></div>
-            <div><div class="sv">+2,200</div><div class="sl">累積標高 m</div></div>
-          </div>
-          <div class="diff-rows">
-            <div class="dr"><span class="dl">技術難易度</span><span class="stars">★★★</span></div>
-            <div class="dr"><span class="dl">体力度</span><span class="stars">★★★★</span></div>
-          </div>
-          <div class="day-list">
-            <div class="day"><div class="dchip">DAY 1<small>7:20</small></div><div class="dtext">新穂高温泉 <span class="ct">→</span> わさび平 <span class="ct">→</span> 秩父沢出合 <span class="ct">→</span> 鏡平山荘 <span class="ct">→</span> 弓折乗越 <span class="ct">→</span> 双六小屋<span class="stay">▸ 1泊目：双六小屋</span></div></div>
-            <div class="day"><div class="dchip">DAY 2<small>6:25</small></div><div class="dtext">双六 <span class="ct">→</span> 樅沢岳 <span class="ct">→</span> 硫黄乗越 <span class="ct">→</span> 左俣乗越 <span class="ct">→</span> 千丈乗越 <span class="ct">→</span> 槍ヶ岳山荘 <span class="ct">→</span> 穂先<span class="stay">▸ 2泊目：槍ヶ岳山荘</span></div></div>
-            <div class="day"><div class="dchip">DAY 3<small>8:00</small></div><div class="dtext">山荘 <span class="ct">→</span> 槍沢 <span class="ct">→</span> 横尾 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 上高地(①の3日目と同じ)</div></div>
-          </div>
-          <ul class="feat-list">
-            <li>3ルート中で最も展望・稜線歩きが充実</li>
-            <li>鏡平の「逆さ槍」、双六の「天空の滑走路」、西鎌の360度展望</li>
-            <li>西鎌尾根に鎖場あり／初日が最長・最ハード(約12.7km)</li>
-          </ul>
-          <div class="review">早朝の双六岳・天空の滑走路、西鎌尾根の360度アルプス展望、山荘から見る夕陽——北アルプスの醍醐味をフルに味わえる山行。ピークハントだけにとどまらない満足度の高さが印象的。<span class="who">— 山行記録より</span></div>
-          <div class="access">
-            <div class="ah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Access</div>
-            ①と同じく新穂高IN・上高地OUTで<strong>車の回収が必要</strong>。沢渡からシャトルバスでIN、または回送サービスを利用。
-          </div>
-        </div>
-      </article>
-
-      <!-- ROUTE 3 -->
-      <article class="rcard reveal">
-        <div class="rcard-top">
-          <svg class="mini" viewBox="0 0 200 120" fill="rgba(255,255,255,.5)"><path d="M0,120 L40,55 L70,85 L100,40 L130,75 L160,30 L200,120 Z"/></svg>
-          <div class="num">03</div>
-          <div class="rkick">Route · Yarisawa</div>
-          <div class="rname">槍沢ピストン</div>
-          <div class="rpath">上高地 → 槍沢 → 槍ヶ岳(往復)</div>
-          <span class="tagline">定番・シンプル・回収不要</span>
-        </div>
-        <div class="rcard-body">
-          <div class="stat-row">
-            <div><div class="sv">37.2<small style="font-size:11px;">km</small></div><div class="sl">歩行距離</div></div>
-            <div><div class="sv">17:35</div><div class="sl">コースタイム</div></div>
-            <div><div class="sv">+2,122</div><div class="sl">累積標高 m</div></div>
-          </div>
-          <div class="diff-rows">
-            <div class="dr"><span class="dl">技術難易度</span><span class="stars">★★<span class="off">★</span></span></div>
-            <div class="dr"><span class="dl">体力度</span><span class="stars">★★★</span></div>
-          </div>
-          <div class="day-list">
-            <div class="day"><div class="dchip">DAY 1<small>4:45</small></div><div class="dtext">上高地BT <span class="ct">→</span> 明神 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 横尾 <span class="ct">→</span> 槍沢ロッヂ<span class="stay">▸ 1泊目：槍沢ロッヂ</span></div></div>
-            <div class="day"><div class="dchip">DAY 2<small>5:30</small></div><div class="dtext">槍沢ロッヂ <span class="ct">→</span> ババ平 <span class="ct">→</span> 天狗原分岐 <span class="ct">→</span> グリーンバンド <span class="ct">→</span> 槍ヶ岳山荘 <span class="ct">→</span> 穂先<span class="stay">▸ 2泊目：槍ヶ岳山荘</span></div></div>
-            <div class="day"><div class="dchip">DAY 3<small>7:20</small></div><div class="dtext">山荘 <span class="ct">→</span> 槍沢ロッヂ <span class="ct">→</span> 横尾 <span class="ct">→</span> 徳沢 <span class="ct">→</span> 上高地</div></div>
-          </div>
-          <ul class="feat-list">
-            <li>最もポピュラーで歩きやすい・谷筋歩き中心</li>
-            <li>信州山のグレーディング：体力度8・技術レベルC</li>
-            <li>ハイシーズンは穂先で渋滞(山頂往復3時間のことも)</li>
-          </ul>
-          <div class="review">定番ルートで安心感がある。1泊2日で挑んだが体力的にきつかった——余裕を持って2泊3日の行程が安心。ハイシーズンは人が多く穂先で大渋滞する。<span class="who">— 山行記録より</span></div>
-          <div class="access">
-            <div class="ah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Access</div>
-            沢渡駐車場(1日800円)に停めてシャトルバスで上高地へ。下山後も同じルートで戻れるので<strong>車の回収が不要 → 最もシンプル</strong>。
-          </div>
-        </div>
-      </article>
-
     </div>
   </div>
 </section>
@@ -575,22 +562,23 @@
 <section class="compare" data-screen-label="比較表">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">At a Glance · ひと目で比較</div>
-      <h2>3ルート、横並び。</h2>
-      <p>※ スマホは横スクロールで全項目を確認できます。</p>
+      <div class="kicker">How We Decided · 決めた理由</div>
+      <h2>なぜ、飛騨沢に決めたか。</h2>
+      <p>検討した3ルートの比較。静かな山行と手堅い行程を優先して、①飛騨沢ルートに決定。※ スマホは横スクロールで全項目を確認できます。</p>
     </div>
     <div class="table-scroll reveal">
       <table>
         <thead>
           <tr>
             <th>項目</th>
-            <th><span class="rt">Route 01</span>① 飛騨沢</th>
+            <th><span class="rt">Route 01 · 採用</span>① 飛騨沢</th>
             <th><span class="rt">Route 02</span>② 双六・西鎌</th>
             <th><span class="rt">Route 03</span>③ 槍沢往復</th>
           </tr>
         </thead>
         <tbody>
-          <tr><th>歩行距離</th><td><span class="big">約37</span> km</td><td><span class="big">約37.5</span> km</td><td><span class="big">約37.2</span> km</td></tr>
+          <tr><th>歩行距離</th><td><span class="big">31.6</span> km <span style="color:#7fd6a3;font-size:12px;">最短</span></td><td><span class="big">39.5</span> km <span style="color:var(--glow);font-size:12px;">最長</span></td><td><span class="big">38.1</span> km</td></tr>
+          <tr><th>累積標高(登/下)</th><td><span class="big">+2,426</span> / -1,980 m</td><td><span class="big">+2,852</span> / -2,415 m</td><td><span class="big">+2,148</span> / -2,144 m</td></tr>
           <tr><th>総コースタイム</th><td><span class="big">17:50</span></td><td><span class="big">21:45</span> <span style="color:var(--glow);font-size:12px;">最長</span></td><td><span class="big">17:35</span> <span style="color:#7fd6a3;font-size:12px;">最短</span></td></tr>
           <tr><th>技術難易度</th><td><span class="star">★★<span class="off">★</span></span></td><td><span class="star">★★★</span></td><td><span class="star">★★<span class="off">★</span></span></td></tr>
           <tr><th>体力度</th><td><span class="star">★★★</span></td><td><span class="star">★★★★</span></td><td><span class="star">★★★</span></td></tr>
@@ -601,6 +589,58 @@
           <tr class="verdict"><th>こんな人に</th><td>静かな山行・<br>体力に自信あり</td><td>展望・<br>稜線重視</td><td>定番・初挑戦・<br>シンプルに</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COSTS ============ -->
+<section class="costs" data-screen-label="費用">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Budget · 費用</div>
+      <h2>今回、かかる費用。</h2>
+      <p>山小屋・交通・駐車場の確定分。飲み物や行動食などの雑費は各自で用意を。</p>
+    </div>
+
+    <div class="cost-grid reveal">
+      <div class="cost-card wide">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v10h5v-6h2v6h5V10"/></svg>山小屋代</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">一泊目<small>槍平小屋</small></span><span class="cl-amt">¥14,800</span></li>
+          <li><span class="cl-label">二泊目<small>槍ヶ岳山荘</small></span><span class="cl-amt">¥16,000<small>+ 個室料 ¥10,000（部屋）</small></span></li>
+          <li><span class="cl-label">キャンセル料<small>殺生ヒュッテ</small></span><span class="cl-amt">¥1,000</span></li>
+        </ul>
+        <p class="cost-foot">※殺生ヒュッテは、槍ヶ岳山荘の予約に失敗したときのキャンセル待ち押さえとして確保していた小屋。無事に山荘が予約できたため、キャンセル料のみ発生。</p>
+      </div>
+
+      <div class="cost-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></svg>沢渡までの交通費</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">自宅 〜 沢渡<small>ガソリン・高速代など</small></span><span class="cl-amt">約¥4,000</span></li>
+        </ul>
+      </div>
+
+      <div class="cost-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>バス</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">沢渡 〜 平湯温泉</span><span class="cl-amt">¥1,500</span></li>
+          <li><span class="cl-label">平湯温泉 〜 新穂高</span><span class="cl-amt">¥910</span></li>
+        </ul>
+      </div>
+
+      <div class="cost-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 010 5H9"/></svg>駐車場（沢渡）</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">1日 ¥800<small>× 3日分</small></span><span class="cl-amt">¥2,400</span></li>
+        </ul>
+      </div>
+
+      <div class="cost-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>その他雑費</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">飲み物・行動食など</span><span class="cl-amt">各自</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -625,6 +665,27 @@
       <h2>下調べは、ここから。</h2>
     </div>
     <div class="link-cols reveal" id="linkCols"></div>
+  </div>
+</section>
+
+<!-- ============ PACKING ============ -->
+<section class="packing" data-screen-label="持ち物">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Packing List · 持ち物</div>
+      <h2>持ち物は、こちらで確認。</h2>
+      <p>ウェア・登山装備・衛生用品まで、カテゴリ別にまとめました。</p>
+    </div>
+    <a class="packing-card reveal" href="itemlist.html">
+      <div class="pc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9a5 5 0 0 1 10 0v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0v2h-5V9Z"/><path d="M7 13.5h10"/><path d="M10 6.5V5a2 2 0 0 1 4 0v1.5"/></svg>
+      </div>
+      <div class="pc-text">
+        <div class="pc-title">持ち物リストを見る</div>
+        <div class="pc-sub">バッグ・ウェア・登山装備・衛生用品など、忘れ物がないかチェック</div>
+      </div>
+      <svg class="pc-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
 </section>
 
@@ -707,7 +768,7 @@
 
   /* ---- NOTES ---- */
   const notes = [
-    {w:true, ic:'<path d="M3 17l9-14 9 14H3z"/><path d="M12 9v3M12 15h.01"/>', h:'山小屋は早めの予約必須', p:'人気のため早期満室になりやすい。特に槍ヶ岳山荘は要注意。'},
+    {w:false, ic:'<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>', h:'山小屋は予約済み', p:'槍平小屋・槍ヶ岳山荘ともに予約完了。人気の山荘なので取れて一安心。'},
     {w:true, ic:'<path d="M12 2v6M12 22v-4M4.9 4.9l3 3M19 19l-3-3M2 12h6M22 12h-4"/><circle cx="12" cy="12" r="2"/>', h:'7月末は残雪の可能性', p:'特に槍沢。アイゼン or チェーンスパイクの要否を直前に確認。'},
     {w:false, ic:'<path d="M13 2L3 14h7l-1 8 10-12h-7z"/>', h:'午後は雷雨が多い', p:'夏山の鉄則。午前中に核心部を通過する行程を基本に。'},
     {w:false, ic:'<path d="M12 2a7 7 0 00-7 7c0 3 2 5 3 7h8c1-2 3-4 3-7a7 7 0 00-7-7z"/><path d="M9 22h6"/>', h:'穂先はヘルメット推奨', p:'三点支持が基本。一歩ずつ確実に。譲り合って渋滞回避。'},

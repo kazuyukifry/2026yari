@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>持ち物リスト ｜ 槍ヶ岳 2026 お父さん3人 北アルプス縦走</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0a1622;
+    --alpine:#15304c;
+    --alpine-2:#1d4067;
+    --sky:#3a78ad;
+    --sky-light:#7fb0d6;
+    --glacier:#e6eef4;
+    --paper:#f6f3ec;
+    --paper-2:#efeae0;
+    --ink:#172029;
+    --stone:#5d6975;
+    --stone-light:#8c97a2;
+    --line:#d8d2c6;
+    --glow:#e07a38;
+    --glow-deep:#c6602a;
+    --snow:#ffffff;
+    --maxw:840px;
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.85;
+    font-size:16px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 24px 64px;}
+  a{color:inherit;}
+
+  .kicker{
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.32em;text-transform:uppercase;
+    font-size:12.5px;color:var(--glow-deep);display:flex;align-items:center;gap:12px;
+  }
+  .kicker::before{content:"";width:30px;height:2px;background:var(--glow);display:inline-block;}
+
+  /* ---- back link ---- */
+  .backtop{
+    display:inline-flex;align-items:center;gap:7px;margin-bottom:26px;
+    font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.08em;font-weight:600;
+    color:var(--stone);text-decoration:none;padding:9px 17px;border-radius:30px;
+    border:1px solid var(--line);background:var(--snow);
+    transition:color .18s,border-color .18s,background .18s;
+  }
+  .backtop:hover{color:var(--alpine);border-color:var(--sky);background:var(--glacier);}
+  .backtop svg{width:13px;height:13px;}
+
+  /* ---- page head ---- */
+  .pagehead{padding:20px 0 44px;}
+  .pagehead h1{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(30px,6.4vw,46px);line-height:1.3;margin-top:14px;letter-spacing:.02em;
+  }
+  .pagehead .lede{margin-top:16px;color:var(--stone);font-size:15px;line-height:1.95;max-width:62ch;}
+
+  /* ---- category card ---- */
+  .cat{
+    background:var(--snow);border:1px solid var(--line);border-radius:var(--r);
+    overflow:hidden;margin-bottom:24px;
+    box-shadow:0 1px 0 rgba(0,0,0,.02),0 24px 48px -32px rgba(21,48,76,.18);
+  }
+  .cat-head{
+    display:flex;align-items:center;gap:13px;padding:18px 22px;
+    background:var(--glacier);border-bottom:1px solid var(--line);
+  }
+  .cat-head .dot{
+    flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--snow);color:var(--alpine);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px var(--line) inset;
+  }
+  .cat-head .dot svg{width:19px;height:19px;}
+  .cat-head .tt{display:flex;flex-direction:column;gap:2px;}
+  .cat-head .en{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);}
+  .cat-head .ja{font-family:'Shippori Mincho',serif;font-weight:700;font-size:17.5px;color:var(--ink);line-height:1.3;}
+
+  .rows{padding:2px 0;}
+  .row{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;padding:14px 22px;}
+  .rows .row:nth-child(even){background:var(--paper-2);}
+  .row .ico{
+    flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--paper);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--stone);
+  }
+  .row .ico svg{width:22px;height:22px;display:block;}
+  .row .main{min-width:0;}
+  .row .head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .row .name{font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .row .note{font-size:13px;line-height:1.8;color:var(--stone);margin-top:5px;}
+  .row .note .em{color:var(--glow-deep);font-weight:700;}
+  .row .note .lend{color:var(--sky);font-weight:700;}
+
+  .bdg{
+    flex:0 0 auto;font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;
+    letter-spacing:.05em;padding:3px 11px;border-radius:30px;line-height:1.7;white-space:nowrap;
+  }
+  .bdg.req{background:var(--glow);color:#1a0f06;}
+  .bdg.rec{background:var(--sky);color:#fff;}
+  .bdg.opt{background:transparent;color:var(--stone-light);border:1px solid var(--line);}
+
+  /* ---- page foot ---- */
+  .pagefoot{
+    background:var(--night);color:#9fb0bf;padding:52px 24px 40px;text-align:center;
+    border-radius:var(--r);margin-top:36px;
+  }
+  .pagefoot .ridge{margin-bottom:28px;opacity:.5;}
+  .pagefoot .fm{font-family:'Shippori Mincho',serif;font-size:22px;color:#fff;font-weight:700;letter-spacing:.06em;}
+  .pagefoot .fen{font-family:'Oswald';letter-spacing:.3em;font-size:11px;color:var(--sky-light);text-transform:uppercase;margin-top:8px;}
+  .pagefoot .backlink{
+    display:inline-block;margin-top:22px;font-family:'Oswald';font-size:12px;letter-spacing:.08em;
+    color:var(--sky-light);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;
+  }
+  .pagefoot .backlink:hover{color:#fff;border-color:#fff;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:520px){
+    .wrap{padding:22px 16px 52px;}
+    .row{padding:13px 16px;gap:12px;}
+    .cat-head{padding:16px 18px;}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <a class="backtop reveal" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    トップページへ
+  </a>
+
+  <header class="pagehead reveal">
+    <div class="kicker">Packing List · 持ち物リスト</div>
+    <h1>山へ、持っていくもの。</h1>
+    <p class="lede">槍ヶ岳・飛騨沢ルート、2026年7/31〜8/2の2泊3日に向けて。すべてを新調する必要はありません。普段お持ちのもので代用できるものも多いので、わからないものは購入前にひと声かけてください。</p>
+  </header>
+
+  <!-- ===== バッグ類 ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9a5 5 0 0 1 10 0v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0v2h-5V9Z"/><path d="M7 13.5h10"/><path d="M10 6.5V5a2 2 0 0 1 4 0v1.5"/></svg>
+      </span>
+      <div class="tt"><span class="en">Bags</span><span class="ja">バッグ類</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9a5 5 0 0 1 10 0v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0v2h-5V9Z"/><path d="M7 13.5h10"/><path d="M10 6.5V5a2 2 0 0 1 4 0v1.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ザック・ザックカバー</span><span class="bdg req">必須</span></div>
+          <div class="note">30〜40Lが目安。登山口から山小屋までずっと背負って歩くので、重くなりすぎないように。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10l-1 8.5a1.5 1.5 0 0 1-1.5 1.3h-5A1.5 1.5 0 0 1 8 18.5L7 10Z"/><path d="M7 10 9 5.5a1.5 1.5 0 0 1 1.4-.9h3.2A1.5 1.5 0 0 1 15 5.5L17 10"/><path d="M10 13.5h4"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">サブバッグ（ウエストバッグ・サコッシュ等）</span><span class="bdg opt">任意</span></div>
+          <div class="note">行動中のスマホやお菓子入れに。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ウェア・シューズ ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16v-5l5-2 2 2 4 1c3 .6 7 1.4 7 4v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M8 9 7 6"/><path d="M6 16v2M10 16.5v1.5M14 17v1"/></svg></span>
+      <div class="tt"><span class="en">Wear &amp; Shoes</span><span class="ja">ウェア・シューズ</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16v-5l5-2 2 2 4 1c3 .6 7 1.4 7 4v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M8 9 7 6"/><path d="M6 16v2M10 16.5v1.5M14 17v1"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">シューズ</span><span class="bdg req">必須</span></div>
+          <div class="note"><span class="em">スニーカー・ランニングシューズは不可。</span>グリップのある登山靴・ハイキングシューズが必要。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 5 6v5l-1.5 1 1.5 7h14l1.5-7L19 11V6l-4-2"/><path d="M9 4c0 2 1.3 3 3 3s3-1 3-3"/><path d="M12 7v12"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">レインウェア</span><span class="bdg req">必須</span></div>
+          <div class="note">透湿防水素材で上下セパレートのもの。防寒としても活用します。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 5 6v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6l-4-2"/><path d="M9 4c0 1.8 1.3 2.8 3 2.8S15 5.8 15 4"/><path d="M12 7v13"/><path d="M5 10.5h7M5 14h7M5 17.5h7M19 10.5h-7M19 14h-7M19 17.5h-7"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">薄手ダウン・フリースなど</span><span class="bdg req">必須</span></div>
+          <div class="note">稜線・山小屋では夏でも寒いので、薄手のダウンかフリースを1枚必ず。フリースは嵩張るので薄手ダウンがおすすめ。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6l3 4.5-1.5 2H15v10H9V10.5H7.5L6 8.5Z"/><path d="M9 4c.5 2 1.5 3 3 3s2.5-1 3-3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">シャツ・肌着</span><span class="bdg req">必須</span></div>
+          <div class="note">速乾・吸汗素材のもの。ユニクロのドライEXなどでも十分。<span class="em">化繊かウール素材（綿NG）。</span>汗をかくので替えを2〜3枚。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l-1 8-1 8H13l-1-4-1 4H9L8 12Z"/><path d="M7 4c1 2 3 3 5 3s4-1 5-3"/><path d="M8 9h8"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">トレッキングパンツ</span><span class="bdg req">必須</span></div>
+          <div class="note">動きやすく、乾きやすい素材のもの。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v8.5c0 1-0.4 1.8-1.3 2.5l-3 2.4a3 3 0 0 0 1.5 5.3 3 3 0 0 0 2.6-1l3.5-4c.8-.9 1.2-1.7 1.2-3V3Z"/><path d="M10 6.5h4.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ソックス</span><span class="bdg req">必須</span></div>
+          <div class="note">薄すぎないもの。化繊またはウール素材がよいです。替えを1〜2足（任意）。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14c0-3.5 1.5-7 5-7s5 3.5 5 7"/><path d="M3 14.5c0-.8 1-1.3 2.2-1.3h13.6c1.2 0 2.2.5 2.2 1.3 0 1-1.6 1.7-3.5 1.7H6.5C4.6 16.2 3 15.5 3 14.5Z"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">帽子</span><span class="bdg rec">推奨</span></div>
+          <div class="note">山の日差しは強いのと、頭をぶつけた時のちょっとした保護にも。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h5.5a1 1 0 0 1 1 .8l.3 2.4a2.2 2.2 0 0 1-4.3.5L4.8 11"/><path d="M21 9h-5.5a1 1 0 0 0-1 .8l-.3 2.4a2.2 2.2 0 0 0 4.3.5l.7-2.2"/><path d="M9.8 10.5h4.4"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">サングラス</span><span class="bdg rec">推奨</span></div>
+          <div class="note">紫外線対策、目の保護に。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6.5a1.3 1.3 0 0 1 2.6 0V10m0 0V5a1.3 1.3 0 0 1 2.6 0v5m0 0V5.5a1.3 1.3 0 0 1 2.6 0V11m0-2a1.3 1.3 0 0 1 2.6 0v4.5c0 3-2 5.5-5 5.5h-2c-1.5 0-2.6-.7-3.4-1.8L4.8 14a1.3 1.3 0 0 1 2-1.7L7 11"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">手袋・アームカバー</span><span class="bdg opt">任意</span></div>
+          <div class="note">防寒や紫外線対策、穂先の岩場では手の保護にも。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l-1 13a3 3 0 0 1-3 2.7 3 3 0 0 1-3-2.7L8 4Z"/><path d="M8 8h8M8.4 12h7.2"/><path d="M16 4l1-1M8 4 7 3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ゲイター（スパッツ）</span><span class="bdg opt">任意</span></div>
+          <div class="note">残雪・泥よけに。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 日焼け・スキンケア ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
+      <div class="tt"><span class="en">Sun &amp; Skincare</span><span class="ja">日焼け・スキンケア</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="8" height="12" rx="2"/><path d="M9.5 8V6.2A1.2 1.2 0 0 1 10.7 5h2.6A1.2 1.2 0 0 1 14.5 6.2V8"/><path d="M8 12h8"/><path d="M16.5 6.5 19 4M17 9h2.5M16.8 11.8 19 13"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">日焼け止め</span><span class="bdg rec">推奨</span></div>
+          <div class="note">標高が上がるほど紫外線は強くなり、平地の2〜3倍とも言われます。穂先まで登れば3,000mオーバー。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="11" width="6" height="9" rx="1.5"/><path d="M10.5 11V8.5a1.5 1.5 0 0 1 3 0V11"/><path d="M10.5 8.5 11 4.5a1 1 0 0 1 2 0l.5 4"/><path d="M9 15h6"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">リップクリーム</span><span class="bdg opt">任意</span></div>
+          <div class="note">紫外線対策にも。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="10" height="10" rx="2.2"/><path d="M10 10V8.5h4V10"/><path d="M11 8.5V6h3.5"/><path d="M14.5 6v2"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">保湿クリーム・ハンドクリーム</span><span class="bdg opt">任意</span></div>
+          <div class="note">山小屋の夜のケアに。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 登山装備 ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 9.5 7l3.5 6 2-3 5 9Z"/><path d="M8 10.5 9.5 9l1.5 2.2"/></svg></span>
+      <div class="tt"><span class="en">Climbing Gear</span><span class="ja">登山装備</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 15.5a7.5 7.5 0 0 1 15 0"/><path d="M3.5 15.5h17v1.8a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1Z"/><path d="M9 9c1-1.4 2-2 3-2s2 .6 3 2"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ヘルメット</span><span class="bdg rec">推奨</span></div>
+          <div class="note">槍の穂先（山頂直下の岩場）に登るときだけ着用が必要。持っている人は持参を、<span class="lend">持っていない人は槍ヶ岳山荘でレンタルできます。</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h10c2.5 0 4 1.4 4 3.5S17.5 16 15 16H5a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1Z"/><path d="M6 16v3M9.5 16v3M13 16v3M16.5 16v2.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">チェーンスパイク（または軽アイゼン）</span><span class="bdg opt">任意</span></div>
+          <div class="note">残雪状況によって必要になりますので別途お知らせします。<span class="lend">4本爪の軽アイゼンが2つ余分にあるのでお貸しできます。</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.5 13 4l-1.5 16"/><path d="M10 3.5 9 6"/><path d="M9.5 16.5h4"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">トレッキングポール</span><span class="bdg opt">任意</span></div>
+          <div class="note">下りの膝の負担軽減、体力の温存に。持つなら折りたたみ式がよいです。穂先アタック時はザックにしまいます。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 0 1 16 0"/><rect x="9.5" y="11.5" width="5" height="4.5" rx="1.2"/><path d="M14.5 13.2 18 12M14.5 14.5l3.5 1"/><path d="M4 14v2.5M20 14v2.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ヘッドランプ・予備電池</span><span class="bdg rec">推奨</span></div>
+          <div class="note">早朝出発や夜間のトイレに備えて携行しておくと安心。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="3"/><path d="M9 7 9.5 4h5L15 7M9 17l.5 3h5l.5-3"/><path d="M12 10v2.2l1.4 1"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">時計</span><span class="bdg opt">任意</span></div>
+          <div class="note">登山アプリ（GPS地図）を入れたスマートウォッチがあると便利。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5 9 4.5l6 2 5-2v13l-5 2-6-2-5 2Z"/><path d="M9 4.5v13M15 6.5v13"/><path d="M14 11.5l2.2-.9-.9 2.2-.9.9Z"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">登山地図・コンパス</span><span class="bdg opt">任意</span></div>
+          <div class="note">共同装備として1人が持ちます。各自でもスマートフォンに登山アプリを入れておくと安心。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="8" rx="1.5"/><path d="M8 8l-4 8M13 8l-5 8M18 8l-5 8M20 9l-4 7"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">エマージェンシーシート</span><span class="bdg opt">任意</span></div>
+          <div class="note">非常時の体温保持用。今回の行程では必要になる想定はありません。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 食料・水分 ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5C12 3.5 6 10 6 14a6 6 0 0 0 12 0c0-4-6-10.5-6-10.5Z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
+      <div class="tt"><span class="en">Food &amp; Water</span><span class="ja">食料・水分</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8.5h6V19a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V8.5Z"/><path d="M9.5 8.5V6.5h5V8.5"/><path d="M10 4.5h4v2h-4z"/><path d="M9 12.5h6"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">水筒・ペットボトル</span><span class="bdg req">必須</span></div>
+          <div class="note">天気やコースによって必要量が変わります。1〜2L程度を目安に、出発前に改めて共有します。<span class="em">槍平小屋・槍ヶ岳山荘は水場が少なく、給水は基本的に小屋での購入(有料)が前提。</span>行動中に飲む分は事前にしっかり持って出発を。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="10" rx="2"/><path d="M9 7v10M9 12h10"/><path d="M5.5 7.5 7 6h10l1.5 1.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">行動食</span><span class="bdg req">必須</span></div>
+          <div class="note">行動中の補給食。高カロリーで軽量ですぐ食べられるもの。ミックスナッツ・チョコバー・カロリーメイトなど。塩分補給に塩タブレットや、補給しやすいゼリー飲料など。持ちすぎに注意！</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 電子機器 ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/></svg></span>
+      <div class="tt"><span class="en">Electronics</span><span class="ja">電子機器</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">スマートフォン</span><span class="bdg req">必須</span></div>
+          <div class="note">電波が弱いこともあるのでバッテリー温存してください。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="14" height="12" rx="2.5"/><path d="M19 10v4"/><path d="M11.5 9l-2 3.2h2.5L10 15.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">モバイルバッテリー・予備電池</span><span class="bdg opt">任意</span></div>
+          <div class="note">山小屋でコンセントが使えない/使いにくい時に。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="11" rx="2.5"/><path d="M8.5 7.5 9.8 5.5h4.4l1.3 2"/><circle cx="12" cy="13" r="3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">カメラ</span><span class="bdg opt">任意</span></div>
+          <div class="note">槍の眺めを記録に残したい人は。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 衛生・身だしなみ ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c0 3.3 1.7 5 5 5-3.3 0-5 1.7-5 5 0-3.3-1.7-5-5-5 3.3 0 5-1.7 5-5Z"/><path d="M17.5 14.5c0 1.7.8 2.5 2.5 2.5-1.7 0-2.5.8-2.5 2.5 0-1.7-.8-2.5-2.5-2.5 1.7 0 2.5-.8 2.5-2.5Z"/></svg></span>
+      <div class="tt"><span class="en">Hygiene &amp; Care</span><span class="ja">衛生・身だしなみ</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="2.5"/><path d="M9 8c0-1.5 1.3-2.5 3-2.5S15 6.5 15 8"/><path d="M9.5 11.5c1.5 1.2 3.5 1.2 5 0"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">体拭き（ボディシート）</span><span class="bdg rec">推奨</span></div>
+          <div class="note"><span class="em">槍平小屋・槍ヶ岳山荘ともにお風呂はありません。</span>大判タイプがあると汗を拭いてさっぱりできます。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2.5"/><path d="M9 5v14"/><path d="M9 8.5h-2.5M9 12h-2.5M9 15.5h-2.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">タオル（小）</span><span class="bdg rec">推奨</span></div>
+          <div class="note">山小屋にタオルの用意はありません。お風呂もないので、汗拭き・手拭き用にかさばらないものを1枚。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="9" rx="2"/><path d="M9 10c0-1.6 1-2.6 2.5-2.6S14 8.4 14 10"/><path d="M10.5 6.5c0-.9.6-1.5 1.5-1.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ウェットティッシュ・ティッシュ</span><span class="bdg rec">推奨</span></div>
+          <div class="note">山のトイレに紙がない場合も。手を拭くときにも便利。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h8l-1 9.5a1.5 1.5 0 0 1-1.5 1.3H10.5A1.5 1.5 0 0 1 9 17.5Z"/><path d="M9.5 8V6.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V8"/><path d="M10 5.5V4M14 5.5V4"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ごみ袋（ビニール袋）</span><span class="bdg rec">推奨</span></div>
+          <div class="note">あると何かと便利。ごみをまとめたり汗で濡れたものを入れたり。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 18 8.5-8.5"/><path d="M14 9.5 16 7.5a2.1 2.1 0 0 1 3 3l-2 2Z"/><path d="m5 17-1.2 1.2a1.3 1.3 0 0 0 1.8 1.8L7 19"/><path d="M14 9.5 17 12.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">歯ブラシ</span><span class="bdg opt">任意</span></div>
+          <div class="note">山では歯磨き粉を使わないのが基本（沢や土壌への環境負荷を減らすため）。槍平小屋・槍ヶ岳山荘は水も少ないので、その意味でも「水うがい」か「乾いたブラッシングだけ」で。歯磨き粉は不要です。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="2.5"/><path d="M9 7V5.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1V7"/><path d="M12 10.5v5M9.5 13h5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">ファーストエイド・薬類</span><span class="bdg opt">任意</span></div>
+          <div class="note">常用薬がある方は忘れずに。頭痛薬・胃薬などは個人で使い慣れているものを。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="13" r="3"/><circle cx="17.5" cy="13" r="3"/><path d="M9.5 12.5c.8-1 2.2-1 3 0"/><path d="M3.5 11 5 8.5M20.5 11 19 8.5"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">眼鏡・コンタクトレンズ用品</span><span class="bdg opt">任意</span></div>
+          <div class="note">必要な方は、コンタクトの予備や、目薬なども忘れずに。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 6.5a4 4 0 0 1 7 2.7c0 2-1.5 2.8-2.6 3.8-1 1-1.4 2.5-2.4 3.3a3 3 0 0 1-4.4-4Z"/><path d="M11 9a2 2 0 0 1 2.6.4"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">耳栓</span><span class="bdg opt">任意</span></div>
+          <div class="note">山小屋で周りの物音が気になる時に。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 書類・貴重品 ===== -->
+  <section class="cat reveal">
+    <div class="cat-head">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="11" height="14" rx="2"/><path d="M9 4V3.5M17 8l2 1v9a2 2 0 0 1-2 2H9"/><path d="M9 9h5M9 12h5"/></svg></span>
+      <div class="tt"><span class="en">Documents &amp; Valuables</span><span class="ja">書類・貴重品</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/><path d="M6 10v4M18 10v4"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">現金</span><span class="bdg req">必須</span></div>
+          <div class="note"><span class="em">山ではキャッシュレス決済が使えないことも。</span>小屋での水・飲料の購入や、トイレの協力金（100〜200円）用の小銭も用意を。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 11.5v3M5.5 13h3"/><path d="M13 11h5M13 14h3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">マイナ保険証・資格確認書</span><span class="bdg opt">任意</span></div>
+          <div class="note">万一の受診に備えて。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 19 6v5c0 4.3-3 7.5-7 9-4-1.5-7-4.7-7-9V6Z"/><path d="M8.5 12 11 9.5l1.5 2.5 1.5-2 2.5 4Z"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">山岳保険</span><span class="bdg opt">任意</span></div>
+          <div class="note">万一に備えるなら、遭難捜索費用が補償されるプランがよいです。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 4V3a3 3 0 0 1 6 0v1"/><path d="M9 4h6v2H9z"/><path d="M8.5 12l1.5 1.5 3-3M14.5 11h2M14.5 14.5h2"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">登山届</span><span class="bdg opt">任意</span></div>
+          <div class="note">まとめて事前にオンライン提出する予定ですので、各自での提出は不要です。</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M5 15.5c.4-1.4 1.6-2.2 3-2.2s2.6.8 3 2.2"/><path d="M14 10h4M14 13h3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">運転免許証・ETCカード</span><span class="bdg opt">任意</span></div>
+          <div class="note">運転手のみ必須。（備忘）</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18"/><path d="M6.5 14.5h3"/></svg></span>
+        <div class="main">
+          <div class="head"><span class="name">キャッシュカード・クレジットカード</span><span class="bdg opt">任意</span></div>
+          <div class="note">下山後の食事などで使うかも。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pagefoot reveal">
+    <svg class="ridge" width="220" height="46" viewBox="0 0 220 46" fill="none" stroke="#3a78ad" stroke-width="1.6"><path d="M0,46 L40,18 L62,30 L88,8 L104,2 L120,8 L150,26 L180,12 L220,46"/></svg>
+    <div class="fm">準備、抜かりなく。</div>
+    <div class="fen">Mt. Yarigatake · Packing List</div>
+    <a class="backlink" href="index.html">← トップページへ戻る</a>
+  </footer>
+
+</main>
+<script>
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
