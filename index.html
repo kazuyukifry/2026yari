@@ -36,6 +36,7 @@
     line-height:1.85;
     font-size:16px;
     overflow-x:hidden;
+    text-wrap:pretty;
   }
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
   .serif{font-family:'Shippori Mincho',serif;}
@@ -62,7 +63,7 @@
     margin-top:14px;
     letter-spacing:.02em;
   }
-  .sec-head p{color:var(--stone);max-width:60ch;margin-top:12px;font-size:15px;}
+  .sec-head p{color:var(--stone);margin-top:12px;font-size:15px;}
   section{padding:72px 0;}
 
   /* ====== HERO ====== */
@@ -106,7 +107,7 @@
     color:var(--sky-light);margin-bottom:18px;text-transform:uppercase;text-shadow:none;
   }
   .hero .lede{
-    margin-top:26px;max-width:46ch;font-size:clamp(15px,2vw,18px);
+    margin-top:26px;font-size:clamp(15px,2vw,18px);
     color:#dde7ef;line-height:1.9;text-shadow:0 2px 14px rgba(0,0,0,.4);
   }
   .hero .facts-strip{
@@ -272,9 +273,8 @@
 
   /* ====== COSTS ====== */
   .costs{background:var(--paper-2);}
-  .cost-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .cost-grid{display:grid;grid-template-columns:1fr;max-width:720px;margin:0 auto;gap:20px;}
   .cost-card{background:var(--snow);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;}
-  .cost-card.wide{grid-column:span 2;}
   .cost-card h3{
     font-family:'Shippori Mincho',serif;font-weight:700;font-size:17px;color:var(--alpine);
     display:flex;align-items:center;gap:9px;padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid var(--line);
@@ -406,8 +406,6 @@
     .vid-grid{grid-template-columns:repeat(2,1fr);}
     .span4,.span6,.span8{grid-column:span 12;}
     .confirmed-grid{gap:14px;}
-    .cost-grid{grid-template-columns:1fr;}
-    .cost-card.wide,.cost-total{grid-column:span 1;}
   }
   @media(max-width:680px){
     section{padding:54px 0;}
@@ -611,7 +609,7 @@
     </div>
 
     <div class="cost-grid reveal">
-      <div class="cost-card wide">
+      <div class="cost-card">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v10h5v-6h2v6h5V10"/></svg>山小屋代</h3>
         <ul class="cost-list">
           <li><span class="cl-label">一泊目<small>槍平小屋</small></span><span class="cl-amt">¥14,800</span></li>
@@ -750,6 +748,7 @@
       {t:'上高地公式 マイカー規制', d:'kamikochi.or.jp', u:'https://www.kamikochi.or.jp/access/restrictions/', f:'上高地'},
     ]},
     {h:'車回送サービス', icon:'<path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5h-2v-1H5v1H3z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/>', items:[
+      {t:'Office花', d:'office-hana.net', u:'https://www.office-hana.net/rate.php', f:'回送'},
       {t:'南安タクシー（沢渡⇔新穂高 回送）', d:'nan-an.co.jp', u:'https://nan-an.co.jp/northern_alps/', f:'回送'},
       {t:'安曇観光タクシー 陸送サービス', d:'azumikanko-taxi.co.jp', u:'https://www.azumikanko-taxi.co.jp/2011/04/040-11.html', f:'回送'},
     ]},
