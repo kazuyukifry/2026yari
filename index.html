@@ -110,18 +110,6 @@
     margin-top:26px;font-size:clamp(15px,2vw,18px);
     color:#dde7ef;line-height:1.9;text-shadow:0 2px 14px rgba(0,0,0,.4);
   }
-  .hero .facts-strip{
-    display:flex;flex-wrap:wrap;gap:0;margin-top:36px;
-    border:1px solid rgba(255,255,255,.22);border-radius:12px;
-    background:rgba(10,22,34,.34);backdrop-filter:blur(6px);overflow:hidden;
-  }
-  .hero .facts-strip > div{
-    padding:16px 24px;flex:1 1 auto;min-width:140px;
-    border-right:1px solid rgba(255,255,255,.16);
-  }
-  .hero .facts-strip > div:last-child{border-right:none;}
-  .hero .facts-strip .lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--sky-light);text-transform:uppercase;}
-  .hero .facts-strip .val{font-family:'Shippori Mincho',serif;font-weight:700;font-size:19px;margin-top:4px;}
   .scroll-hint{
     position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;
     font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.65);
@@ -409,7 +397,6 @@
     .vid-grid{grid-template-columns:1fr;}
     .link-cols{grid-template-columns:1fr;gap:8px;}
     .note-grid{grid-template-columns:1fr;}
-    .hero .facts-strip > div{flex:1 1 50%;border-right:1px solid rgba(255,255,255,.16);}
     .timeline{flex-direction:column;}
     .tl{padding:0 0 0 26px;}
     .tl::before{top:0;bottom:0;left:6px;right:auto;width:2px;height:auto;}
@@ -434,13 +421,6 @@
   <div class="hero-inner reveal">
     <h1><span class="en">Mt. Yarigatake · 3,180m</span>槍ヶ岳<span style="font-size:.42em;letter-spacing:.06em;">へ、いざ。</span></h1>
     <p class="lede">近所のお父さん3人が挑む、北アルプスの槍。2026年の夏、2泊3日の縦走計画。登る道は飛騨沢ルートに決定、山小屋も2泊とも予約済み。あとは登るだけ。</p>
-    <div class="facts-strip">
-      <div><div class="lbl">Members</div><div class="val">お父さん 3人</div></div>
-      <div><div class="lbl">Dates</div><div class="val">7/31 — 8/2</div></div>
-      <div><div class="lbl">Route</div><div class="val">飛騨沢ルート</div></div>
-      <div><div class="lbl">Style</div><div class="val">2泊3日 / 山小屋</div></div>
-      <div><div class="lbl">Access</div><div class="val">相乗り 1台</div></div>
-    </div>
   </div>
   <div class="scroll-hint">SCROLL<span style="font-size:16px;line-height:1;">↓</span></div>
 </header>
