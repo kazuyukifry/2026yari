@@ -357,7 +357,6 @@
   /* ====== NOTES ====== */
   .notes{background:var(--paper);}
   .note-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-  .note-grid .note:last-child:nth-child(odd){grid-column:1 / -1;}
   .note{
     background:var(--snow);border:1px solid var(--line);border-left:4px solid var(--sky);
     border-radius:10px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;
@@ -396,7 +395,6 @@
     .hero-inner{padding:130px 18px 48px;}
     .vid-grid{grid-template-columns:1fr;}
     .link-cols{grid-template-columns:1fr;gap:8px;}
-    .note-grid{grid-template-columns:1fr;}
     .timeline{flex-direction:column;}
     .tl{padding:0 0 0 26px;}
     .tl::before{top:0;bottom:0;left:6px;right:auto;width:2px;height:auto;}
@@ -752,7 +750,6 @@
 
   /* ---- NOTES ---- */
   const notes = [
-    {w:false, ic:'<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>', h:'山小屋は予約済み', p:'槍平小屋・槍ヶ岳山荘ともに予約完了。人気の山荘なので取れて一安心。'},
     {w:true, ic:'<path d="M12 2v6M12 22v-4M4.9 4.9l3 3M19 19l-3-3M2 12h6M22 12h-4"/><circle cx="12" cy="12" r="2"/>', h:'7月末は残雪の可能性', p:'特に槍沢。アイゼン or チェーンスパイクの要否を直前に確認。'},
     {w:false, ic:'<path d="M13 2L3 14h7l-1 8 10-12h-7z"/>', h:'午後は雷雨が多い', p:'夏山の鉄則。午前中に核心部を通過する行程を基本に。'},
     {w:false, ic:'<path d="M12 2a7 7 0 00-7 7c0 3 2 5 3 7h8c1-2 3-4 3-7a7 7 0 00-7-7z"/><path d="M9 22h6"/>', h:'穂先はヘルメット推奨', p:'三点支持が基本。一歩ずつ確実に。譲り合って渋滞回避。'},
