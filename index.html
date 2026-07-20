@@ -78,7 +78,18 @@
   }
   .hero-bg{
     position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;object-position:58% 62%;z-index:0;
+    object-fit:cover;z-index:0;
+    animation:heroCrossfade 16s ease-in-out infinite;
+  }
+  .hero-bg:nth-of-type(1){object-position:58% 62%;}
+  .hero-bg:nth-of-type(2){object-position:55% 48%;animation-delay:-8s;}
+  @keyframes heroCrossfade{
+    0%,40%{opacity:1;}
+    50%,90%{opacity:0;}
+    100%{opacity:1;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-bg{animation:none;}
   }
   .hero-scrim{
     position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -414,6 +425,7 @@
 <!-- ============ HERO ============ -->
 <header class="hero" data-screen-label="ヒーロー">
   <img class="hero-bg" src="top.jpg" alt="夜明けの槍ヶ岳">
+  <img class="hero-bg" src="top2.jpg" alt="朝日に照らされる稜線を歩く登山者">
   <div class="hero-scrim"></div>
 
   <div class="hero-top">
