@@ -297,6 +297,12 @@
   .cost-list .cl-amt{font-family:'Oswald',sans-serif;font-weight:600;font-size:16px;color:var(--alpine);white-space:nowrap;text-align:right;flex-shrink:0;}
   .cost-list .cl-amt small{display:block;font-family:'Noto Sans JP',sans-serif;font-weight:500;font-size:11.5px;color:var(--stone-light);margin-top:2px;}
   .cost-foot{margin-top:14px;font-size:12px;color:var(--stone-light);line-height:1.75;padding-top:12px;border-top:1px dashed var(--line);}
+  .cost-foot a{color:var(--sky);font-weight:600;}
+  .cost-foot a:hover{color:var(--glow-deep);}
+
+  /* ====== ONSEN ====== */
+  .onsen{background:var(--paper);}
+  .onsen-grid{display:grid;grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto;gap:20px;}
 
   /* ====== MEDIA / VIDEOS ====== */
   .media{background:var(--paper);}
@@ -427,6 +433,7 @@
     .tl .d{margin-top:0;}
     .tl .mode{position:static;justify-content:flex-start;margin:2px 0 4px;}
     .tl-connector{padding-left:26px;}
+    .onsen-grid{grid-template-columns:1fr;}
     .undecided-note{flex-direction:column;}
   }
 </style>
@@ -501,9 +508,9 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Departure Day · 出発日の流れ</div>
         <div class="timeline">
           <div class="tl"><div class="dot"></div><div class="d">3:30</div><div class="t">集合・出発</div><div class="s">道中コンビニで水・食料等を調達</div><div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></svg>車</div></div>
-          <div class="tl"><div class="dot"></div><div class="d">8:46</div><div class="t">さわんどBT発</div><div class="s">バス：高山濃飛バスセンター行き</div><div class="mode"><a href="https://www.nouhibus.co.jp/highwaybus/matsumoto/" target="_blank" rel="noopener" title="時刻表・運賃（濃飛バス公式）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>バス</a></div></div>
+          <div class="tl"><div class="dot"></div><div class="d">8:46</div><div class="t">さわんどBT発</div><div class="s">高山濃飛バスセンター行き</div><div class="mode"><a href="https://www.nouhibus.co.jp/highwaybus/matsumoto/" target="_blank" rel="noopener" title="時刻表・運賃（濃飛バス公式）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>バス</a></div></div>
           <div class="tl"><div class="dot"></div><div class="d">9:08</div><div class="t">平湯温泉 着</div><div class="s">バス乗り換え</div></div>
-          <div class="tl"><div class="dot"></div><div class="d">9:40</div><div class="t">平湯温泉 発</div><div class="s">バス：新穂高ロープウェイ行き</div><div class="mode"><a href="https://www.nouhibus.co.jp/route_bus/shinhotaka-line/" target="_blank" rel="noopener" title="時刻表・運賃（濃飛バス公式）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>バス</a></div></div>
+          <div class="tl"><div class="dot"></div><div class="d">9:40</div><div class="t">平湯温泉 発</div><div class="s">新穂高ロープウェイ行き</div><div class="mode"><a href="https://www.nouhibus.co.jp/route_bus/shinhotaka-line/" target="_blank" rel="noopener" title="時刻表・運賃（濃飛バス公式）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>バス</a></div></div>
           <div class="tl"><div class="dot"></div><div class="d">10:16</div><div class="t">新穂高ロープウェイ 着</div><div class="s">登山口へ</div></div>
         </div>
       </div>
@@ -628,8 +635,8 @@
       <div class="cost-card">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v10h5v-6h2v6h5V10"/></svg>山小屋代</h3>
         <ul class="cost-list">
-          <li><span class="cl-label">一泊目<small>槍平小屋</small></span><span class="cl-amt">¥14,800</span></li>
-          <li><span class="cl-label">二泊目<small>槍ヶ岳山荘</small></span><span class="cl-amt">¥16,000<small>+ 個室料 ¥10,000（部屋）</small></span></li>
+          <li><span class="cl-label">1泊目<small>槍平小屋</small></span><span class="cl-amt">¥14,800</span></li>
+          <li><span class="cl-label">2泊目<small>槍ヶ岳山荘</small></span><span class="cl-amt">¥16,000<small>+ 個室料 ¥10,000（部屋）</small></span></li>
           <li><span class="cl-label">キャンセル料<small>殺生ヒュッテ</small></span><span class="cl-amt">¥1,000</span></li>
         </ul>
         <p class="cost-foot">※殺生ヒュッテは、槍ヶ岳山荘の予約に失敗したときのキャンセル待ち押さえとして確保していた小屋。無事に山荘が予約できたため、キャンセル料のみ発生。</p>
@@ -645,9 +652,9 @@
       <div class="cost-card">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>バス</h3>
         <ul class="cost-list">
-          <li><span class="cl-label">沢渡 〜 平湯温泉</span><span class="cl-amt">¥1,500</span></li>
-          <li><span class="cl-label">平湯温泉 〜 新穂高</span><span class="cl-amt">¥910</span></li>
-          <li><span class="cl-label">上高地 〜 沢渡</span><span class="cl-amt">¥1,600</span></li>
+          <li><span class="cl-label">沢渡 〜 平湯温泉（7/31）</span><span class="cl-amt">¥1,500</span></li>
+          <li><span class="cl-label">平湯温泉 〜 新穂高（7/31）</span><span class="cl-amt">¥910</span></li>
+          <li><span class="cl-label">上高地 〜 沢渡（8/2）</span><span class="cl-amt">¥1,600</span></li>
         </ul>
         <p class="cost-foot">※上高地〜沢渡はタクシー相乗りの方が安くなる場合あり。</p>
       </div>
@@ -724,6 +731,37 @@
   </div>
 </section>
 
+<!-- ============ ONSEN ============ -->
+<section class="onsen" data-screen-label="下山後の温泉">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">After the Hike · 下山後のお風呂</div>
+      <h2>汗を流して、帰ろう。</h2>
+      <p>さわんどバスターミナル〜松本ICの間で見つけた2つの候補。どちらも梓川沿いの日帰り温泉です。</p>
+    </div>
+    <div class="onsen-grid reveal">
+      <div class="cost-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1 2-1 3 0 4s1 2 0 4"/><path d="M8 5c-.7 1.4-.7 2.1 0 3.3s.7 1.9 0 3.3"/><path d="M16 5c.7 1.4.7 2.1 0 3.3s-.7 1.9 0 3.3"/><ellipse cx="12" cy="17" rx="8" ry="3.5"/></svg>さわんど温泉 梓湖畔の湯</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">営業時間</span><span class="cl-amt">10:00〜18:45<small>最終入館 18:15</small></span></li>
+          <li><span class="cl-label">定休日</span><span class="cl-amt">不定休<small>HP要確認</small></span></li>
+          <li><span class="cl-label">入浴料金<small>大人 / 子供</small></span><span class="cl-amt">¥750<small>¥380</small></span></li>
+        </ul>
+        <p class="cost-foot">長野県松本市安曇4159-14。梓川沿いの絶景露天風呂で、さわんどバスターミナルのすぐそば。大雨・上高地公園線通行止め時は臨時休業あり。<br><a href="https://azusakohaann.jimdofree.com/" target="_blank" rel="noopener">公式サイトで最新情報を見る →</a></p>
+      </div>
+      <div class="cost-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1 2-1 3 0 4s1 2 0 4"/><path d="M8 5c-.7 1.4-.7 2.1 0 3.3s.7 1.9 0 3.3"/><path d="M16 5c.7 1.4.7 2.1 0 3.3s-.7 1.9 0 3.3"/><ellipse cx="12" cy="17" rx="8" ry="3.5"/></svg>竜島温泉 せせらぎの湯</h3>
+        <ul class="cost-list">
+          <li><span class="cl-label">営業時間</span><span class="cl-amt">10:00〜22:00<small>入館締切 21:00</small></span></li>
+          <li><span class="cl-label">定休日</span><span class="cl-amt">毎週月曜<small>祝日の場合は翌火曜</small></span></li>
+          <li><span class="cl-label">入浴料金<small>大人 / 子供</small></span><span class="cl-amt">¥620<small>¥310</small></span></li>
+        </ul>
+        <p class="cost-foot">長野県松本市波田3452。松本IC寄りで営業時間が長め、下山後の遅い時間でも安心。<br><a href="https://ryushima-onsen.jp/" target="_blank" rel="noopener">公式サイトで最新情報を見る →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <svg class="ridge" width="220" height="46" viewBox="0 0 220 46" fill="none" stroke="#3a78ad" stroke-width="1.6"><path d="M0,46 L40,18 L62,30 L88,8 L104,2 L120,8 L150,26 L180,12 L220,46"/></svg>
@@ -762,6 +800,11 @@
       {t:'THE JAPAN ALPS 槍沢ルート', d:'thejapanalps.com', u:'https://thejapanalps.com/route/mt-yarigatake/route-01/', f:'ALPS'},
       {t:'THE JAPAN ALPS 西鎌尾根ルート', d:'thejapanalps.com', u:'https://thejapanalps.com/route/mt-yarigatake/route-03/', f:'ALPS'},
       {t:'上高地公式 マイカー規制', d:'kamikochi.or.jp', u:'https://www.kamikochi.or.jp/access/restrictions/', f:'上高地'},
+    ]},
+    {h:'利用するバス', icon:'<rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/>', items:[
+      {t:'さわんどBT→平湯温泉', d:'nouhibus.co.jp', u:'https://www.nouhibus.co.jp/highwaybus/matsumoto/', f:'濃飛'},
+      {t:'平湯温泉→新穂高ロープウェイ', d:'nouhibus.co.jp', u:'https://www.nouhibus.co.jp/route_bus/shinhotaka-line/', f:'濃飛'},
+      {t:'上高地→さわんどBT', d:'alpico.co.jp', u:'https://www.alpico.co.jp/traffic/local/kamikochi/sawando/', f:'アルピコ'},
     ]},
     {h:'車回送サービス', icon:'<path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5h-2v-1H5v1H3z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/>', items:[
       {t:'Office花', d:'office-hana.net', u:'https://www.office-hana.net/rate.php', f:'回送'},
